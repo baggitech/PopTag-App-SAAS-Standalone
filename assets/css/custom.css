@@ -1,0 +1,342 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Hanlding Updates
+-----------------------------------------------------------------*/
+html {
+  text-size-adjust: 100%;
+}
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+body {
+  background: #ededed;
+  font-family: Proxima Nova, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+body, p {
+  color: rgba(0, 0, 0, .9);
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+}
+
+#main-wrapper {
+  background: #ededed;
+}
+
+.btn-primary-modified {
+  background-color: rgba(71, 154, 209, .15);
+  border-color: transparent;
+  color: #009ee3;
+  font-family: Proxima Nova, -apple-system, Roboto, Arial, sans-serif;
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: .18s ease-out;
+  transition-property: background, color;
+}
+.btn-primary-modified:hover {
+  background-color: rgba(71, 154, 209, .2);
+  border-color: transparent;
+  color: #009ee3;
+  transition: background-color .2s ease-in;
+}
+
+/* #######################################################################################*/
+
+.hidden {
+  display: none;
+}
+
+.ev1 {
+  border: 1px dashed red;
+}
+
+.ev2 {
+  border: 1px dashed green;
+}
+
+
+/* -----------------------------------*/
+
+
+
+/* START CUSTOM ACCORDION */
+.accordion-header .accordion-button:after {
+  right: 15px;
+}
+.accordion .accordion-header .accordion-button {
+  padding: 1rem 1.25rem 1rem 1.25rem;
+}
+.accordion .accordion-body {
+  padding: 1rem 0 0.4rem 0;
+}
+/* END CUSTOM ACCORDION */
+
+
+
+/* -----------------------------------*/
+
+
+
+/* START COLOR PICKER */
+.pickr .pcr-button {
+    position: relative;
+    height: 2em;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.15em;
+    background: #dee2e6;
+    background-size: 0;
+    transition: all .3s;
+}
+.pickr .pcr-button {
+    border: 1px solid #dee2e6;
+}
+/* END COLOR PICKER */
+
+
+
+/* -----------------------------------*/
+
+
+
+/* START TOASTR */
+.toast-top-right {
+  top: 12px;
+  right: 12px;
+}
+/* END TOASTR */
+
+
+
+/* -----------------------------------*/
+
+
+
+/* START PRICE SECTION */
+section.pricing {
+  /*background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);*/
+}
+.pricing .card {
+  border: none;
+  border-radius: 5px;/*1rem*/
+  transition: all 0.2s;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+.pricing hr {
+  margin: 1.5rem 0;
+}
+.pricing .card-title {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+}
+.pricing .card-price {
+  font-size: 3rem;
+  margin: 0;
+}
+.pricing .card-price .period {
+  font-size: 0.8rem;
+}
+.pricing ul li {
+  margin-bottom: 1rem;
+}
+.pricing .text-muted {
+  opacity: 0.7;
+}
+.pricing .btn {
+  font-size: 80%;
+  border-radius: 5px;/*5rem*/
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+@media (min-width: 992px) {
+  .pricing .card:hover {
+    margin-top: -.25rem;
+    margin-bottom: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .pricing .card:hover .btn {
+    opacity: 1;
+  }
+}
+/* END PRICE SECTION */
+
+
+
+/* -----------------------------------*/
+
+
+
+
+/* START BACKGROUND HERO */
+.bd-masthead {
+  padding: 3rem 0;
+  background-image: linear-gradient(180deg, 
+  rgba(255, 255, 255, 0.01), 
+  rgba(255, 255, 255, 1) 85%),
+  radial-gradient(ellipse at top left, 
+  rgba(13, 110, 253, 0.5), transparent 50%),
+  radial-gradient(ellipse at top right, 
+  rgba(255,228,132, 0.5), transparent 50%),
+  radial-gradient(ellipse at center right, 
+  rgba(112.520718,44.062154,249.437846, 0.5), transparent 50%),
+  radial-gradient(ellipse at center left, 
+  rgba(214,51,132, 0.5), transparent 50%);
+}
+/* END BACKGROUND HERO  */
+
+
+
+/* -----------------------------------*/
+
+
+
+/* STICKY MOBILE PREVIEW  */
+.sticky {
+    position: sticky !important;
+    top: 1rem;
+    /*top: 5.5rem;*/
+    height: min-content;
+}
+
+
+
+/* -----------------------------------*/
+/* START PREVIEW IFRAME */
+.biolink-preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.biolink-preview {
+  position: relative;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left;
+  border-radius: 2rem;
+  padding: 1rem;
+  background: linear-gradient(145deg, #333, #000);
+  border: 0.25rem solid #444546;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.biolink-preview-iframe-container {
+  overflow: hidden; /* Esconde as barras de rolagem */
+  width: 300px;
+  height: 625px;
+  border-radius: 2rem;
+  position: relative;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .biolink-preview-iframe-container {
+    width: 375px;
+    height: 800px;
+  }
+}
+
+.biolink-preview-iframe-loading {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+}
+
+.biolink-preview-spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.biolink-preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+/* END PREVIEW IFRAME */
+/* -----------------------------------*/
+
+
+
+
+/* START DROPDOWN */
+.dropdown-toggle-simple::after {
+  display:none;
+}
+/* END DROPDOWN */
+
+
+
+
+/* -----------------------------------*/
+
+
+
+
+/* START SELECT BACKGROUND */
+.link-background-type-preset {
+  width: 100%;
+  height: 4rem;
+  border-radius: .25rem;
+  opacity: .75;
+  transition: .3s opacity;
+}
+
+.link-background-type-preset:hover {
+  cursor: pointer;
+}
+
+input[type="radio"]:checked ~ .link-background-type-preset {
+  opacity: 1;
+}
+
+.img-item {
+  width: 70% !important;
+}
+
+h2 {
+  color: #332470;
+}
+/* END SELECT BACKGROUND */

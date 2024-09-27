@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f
+# RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)$   $1                 [L]
+RewriteRule ^(.*)$   index.php?url=$1   [QSA,L]
+# RewriteRule ^400$    400.php   			[QSA,L]
+# RewriteRule ^404$    404.php   			[QSA,L]
+# RewriteRule ^500$    500.php   			[QSA,L]
+
+
