@@ -88,8 +88,8 @@ if (isset($_GET['url']) && !empty($_GET['url']))
         if ($statement->rowCount() > 0) 
         {
             $result = $statement->fetch(PDO::FETCH_ASSOC);
-            $_SESSION['link_id'] = $result['link_id'];
-            $_SESSION['link_name'] = $result['link_name'];
+            //$_SESSION['link_id'] = $result['link_id'];
+            //$_SESSION['link_name'] = $result['link_name'];
         } 
         else 
         {

@@ -22,9 +22,11 @@
 
                     <form action="" method="POST" enctype="multipart/form-data">
 
-                        <input type="" name="form_" value="link_background_update">
-                        <input type="" name="token" value="<?= $_SESSION['token'] ?? ''; ?>">
-                        <input type="" name="link_id" value="<?= $link['link_id'] ?? ''; ?>">
+                        <div class="hidden mb-3">
+                            <input type="text" name="form_" class="form-control ev1 mb-1" value="link_background_update" readonly>
+                            <input type="text" name="token" class="form-control ev1 mb-1" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                            <input type="text" name="link_id" class="form-control ev1 mb-1" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                        </div>
 
                         <div class="form-group mb-3">
                             <label for="background_type" class="text-muted mb-2">Selecione uma opção:</label>

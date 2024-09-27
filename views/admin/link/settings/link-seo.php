@@ -22,9 +22,11 @@
 
                     <form action="" method="POST" enctype="multipart/form-data">
 
-                        <input type="" name="form_" value="link_seo_update">
-                        <input type="" name="token" value="<?= $_SESSION['token'] ?? ''; ?>">
-                        <input type="" name="link_id" value="<?= $link['link_id'] ?? ''; ?>">
+                        <div class="hidden mb-3">
+                            <input type="text" name="form_" class="form-control ev1 mb-1" value="link_seo_update" readonly>
+                            <input type="text" name="token" class="form-control ev1 mb-1" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                            <input type="text" name="link_id" class="form-control ev1 mb-1" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                        </div>
 
                         <div class="form-check form-switch mb-3">
                             <input type="checkbox" name="seo_robots" id="seo_robots" class="form-check-input" role="switch" value="1" <?= ($link_seo['seo_robots'] == 1) ? 'checked' : ''; ?>>

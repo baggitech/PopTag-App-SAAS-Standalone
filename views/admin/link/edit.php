@@ -9,9 +9,7 @@
 
           <div class="col-12 col-lg-12 mb-3">
             <h3 class="fw-400">
-              <span class="text-muted text-truncate">Nome do Link: </span><?php echo $link['link_name']; ?> | 
-              <br>Link ID: <?= $_SESSION['link_id'] ?? ''; ?>
-              <br>User ID: <?= $_SESSION['user_id'] ?? ''; ?>
+              <span class="text-muted text-truncate">Nome do Link: </span><?php echo $link['link_name']; ?>
             </h3>
           </div>
 
