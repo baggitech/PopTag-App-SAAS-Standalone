@@ -30,9 +30,9 @@
             <div class="col-12 col-lg-6 mb-3">
               <div class="d-flex gap-2 justify-content-lg-end">
 
-                <a href="#" type="button" class="btn btn-sm btn-primary">
+                <!-- <a href="#" type="button" class="btn btn-sm btn-primary">
                   <i class="fas fa-file-download me-1"></i> PDF
-                </a>
+                </a> -->
 
                 <a href="#" type="button" class="btn btn-sm btn-primary">
                   <i class="fa fa-chart-bar me-1"></i> Relatórios
@@ -42,9 +42,9 @@
                   <i class="fa fa-plus-circle me-1"></i> Criar Projeto
                 </button>
 
-                <a href="<?= URL_PATH; ?>dashboard" type="button" class="btn btn-sm btn-primary">
+                <!-- <a href="<?= URL_PATH; ?>dashboard" type="button" class="btn btn-sm btn-primary">
                   <i class="fa fa-backward me-1"></i> Voltar
-                </a>
+                </a> -->
 
               </div>
             </div>
@@ -58,7 +58,7 @@
 
         <!-- Left Panel -->
         <aside class="col-12 col-lg-3">
-          <?php require_once(__DIR__ . '/../partials/aside.php'); ?>
+          <?php require_once(__DIR__ . '/../../partials/aside.php'); ?>
         </aside>
         <!-- Left Panel End -->
 

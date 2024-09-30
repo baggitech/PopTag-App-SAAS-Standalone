@@ -11,14 +11,12 @@ class ProfileController extends Controller
 {
 	public function index()
 	{
-		$page = 'profile/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
+		// ---------------------------------------------------------------------- //
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/profile/index', $data);
 	}
 }

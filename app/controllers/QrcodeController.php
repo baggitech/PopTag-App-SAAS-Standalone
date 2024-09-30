@@ -12,12 +12,10 @@ class QrcodeController extends Controller
 {
 	public function index()
 	{
-		$page = 'qrcode/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
+		// ---------------------------------------------------------------------- //
 
 		$class_link = new Link();
 		$data['links'] = $class_link->getLinksJoinDomainsByUserId($user_id);
@@ -33,19 +31,17 @@ class QrcodeController extends Controller
 		require_once(__DIR__ . '/forms/qr-code-delete.php');
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/qrcode/index', $data);
 	}
 
 	public function edit()
 	{
-		$page = 'qrcode/edit';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
+		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
+
 		$link_id = $_SESSION['link_id'] ?? null;
 		$qrcode_id = $_SESSION['qrcode_id'] ?? null;
-
-		// Chama o serviço para obter os dados
-		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
 
 		$class_link = new Link();
 		$data['link'] = $class_link->getLinkJoinsAllTablesByLinkId($link_id);
@@ -59,6 +55,6 @@ class QrcodeController extends Controller
 		require_once(__DIR__ . '/forms/qr-code-delete.php');
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/qrcode/edit', $data);
 	}
 }

@@ -159,6 +159,7 @@ class Authentication extends Model
 		// Verifica se o usuário está logado, se sim, redireciona para a página inicial.
 		if ($this->isLoggedIn()) 
 		{
+			$_SESSION['error_message'] = 'Não permitido!';
 			header("Location: " . URL_PATH . "./dashboard");
 			exit;
 		}

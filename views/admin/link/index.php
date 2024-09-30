@@ -30,9 +30,9 @@
             <div class="col-12 col-lg-6 mb-3">
               <div class="d-flex gap-2 justify-content-lg-end">
 
-                <a href="#" type="button" class="btn btn-sm btn-primary">
+                <!-- <a href="#" type="button" class="btn btn-sm btn-primary">
                   <i class="fas fa-file-download me-1"></i> PDF
-                </a>
+                </a> -->
 
                 <a href="#" type="button" class="btn btn-sm btn-primary">
                   <i class="fa fa-chart-bar me-1"></i> Relatórios
@@ -42,9 +42,9 @@
                   <i class="fa fa-plus-circle me-1"></i> Criar link
                 </button>
 
-                <button type="button" class="btn btn-sm btn-primary" onclick="simularBotaoVoltar()">
+                <!-- <button type="button" class="btn btn-sm btn-primary" onclick="simularBotaoVoltar()">
                   <i class="fa fa-backward me-1"></i> Voltar
-                </button>
+                </button> -->
 
               </div>
             </div>
@@ -56,14 +56,14 @@
 
       <div class="row">
 
-        <!-- Left Panel
+        <!-- Left Panel -->
         <aside class="col-12 col-lg-3">
-          <?php //require_once(__DIR__ . '/../../partials/aside.php'); ?>
-        </aside> -->
+          <?php require_once(__DIR__ . '/../../partials/aside.php'); ?>
+        </aside>
         <!-- Left Panel End -->
 
         <!-- Middle Panel -->
-        <div class="col-12 col-lg-12">
+        <div class="col-12 col-lg-9">
           <div class="card shadow-sm rounded">
             <div class="card-header d-flex align-items-center justify-content-between py-3 px-4">
               <h5 class="text-5 fw-400 mt-2">Todos os links</h5>

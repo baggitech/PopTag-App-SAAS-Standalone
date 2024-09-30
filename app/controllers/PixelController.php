@@ -12,12 +12,10 @@ class PixelController extends Controller
 {
 	public function index()
 	{
-		$page = 'pixel/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
+		// ---------------------------------------------------------------------- //
 
 		$class_link = new Link();
 		$data['links'] = $class_link->getLinksJoinDomainsByUserId($user_id);
@@ -33,20 +31,18 @@ class PixelController extends Controller
 		require_once(__DIR__ . '/forms/pixel-delete.php');
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/pixel/index', $data);
 	}
 
 	public function edit()
 	{
-		$page = 'pixel/edit';
-		$link_id = $_SESSION['link_id'] ?? null;
-		$pixel_id = $_SESSION['pixel_id'] ?? null;
+		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
-
-		$data = array();		
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
+		// ---------------------------------------------------------------------- //
+
+		$link_id = $_SESSION['link_id'] ?? null;		
+		$pixel_id = $_SESSION['pixel_id'] ?? null;
 
 		$class_link = new Link();
 		$data['link'] = $class_link->getLinkJoinsAllTablesByLinkId($link_id);
@@ -59,6 +55,6 @@ class PixelController extends Controller
 		require_once(__DIR__ . '/forms/pixel-delete.php');
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/pixel/edit', $data);
 	}
 }

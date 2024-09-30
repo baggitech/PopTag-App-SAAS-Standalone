@@ -11,14 +11,10 @@ class NotificationsController extends Controller
 {
 	public function index()	
 	{
-		$page = 'notifications/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
+		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
 
-		// Chama o serviço para obter os dados
-		$data = (new DataService())->getDataServiceBackEnd($page, $data, $user_id);
-
-		$this->loadTemplate('notifications/index', $data);
-
+		$this->loadTemplate('admin/notifications/index', $data);
 	}
 }

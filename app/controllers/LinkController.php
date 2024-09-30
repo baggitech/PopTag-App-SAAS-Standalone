@@ -12,7 +12,6 @@ class LinkController extends Controller
 {
     public function index()
     {
-        $route = 'admin/link/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
@@ -28,12 +27,11 @@ class LinkController extends Controller
         require_once __DIR__.'/forms/link-enabledDisabled.php';
         require_once __DIR__.'/forms/link-delete.php';
 
-        $this->loadTemplate($route, $data);
+        $this->loadTemplate('admin/link/index', $data);
     }
 
     public function edit()
     {
-        $route = 'admin/link/edit';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
@@ -76,6 +74,6 @@ class LinkController extends Controller
         require_once __DIR__.'/forms/block-avatar-delete.php';
         require_once __DIR__.'/forms/block-avatar-enabledDisabled.php';
         
-        $this->loadTemplate($route, $data);
+        $this->loadTemplate('admin/link/edit', $data);
     }
 }

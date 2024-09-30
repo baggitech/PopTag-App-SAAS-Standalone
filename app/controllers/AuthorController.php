@@ -12,13 +12,11 @@ class AuthorController extends Controller
 {
 	public function index()
 	{
-		$page = 'author/index';
 		$data = array();
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceFrontEnd($data);
+		// ---------------------------------------------------------------------- //
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('author/index', $data);
 	}
 }

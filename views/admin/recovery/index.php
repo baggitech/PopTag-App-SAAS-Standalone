@@ -8,10 +8,11 @@
             <h3 class="text-center mb-4">Recuperar Senha</h3>
             <hr class="mx-n3 mx-sm-n5">
             <p class="lead text-4 text-center">Insira seu endereço de e-mail.<br>Você recebera um link para alterar a senha.</p>
+
             <form action="" method="POST">
 
-              <input type="hidden" name="token" value="<?=$_SESSION['csrf_token'];?>" readonly>
-              <input type="hidden" name="form_recovery" readonly>
+              <input type="hidden" name="form_" value="recovery" readonly>
+              <input type="hidden" name="token" value="<?=$_SESSION['csrf_token'];?>" readonly>              
 
               <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
@@ -25,6 +26,7 @@
               </div>
               
             </form>
+            
             <p class="text-3 text-muted text-center mb-0">Voltar para o  
               <a class="btn-link" href="<?=URL_PATH;?>signin">Login!</a>
             </p>

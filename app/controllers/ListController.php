@@ -11,14 +11,12 @@ class ListController extends Controller
 {
 	public function index()	
 	{
-		$page = 'list/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
-		$data = (new DataService())->getDataServiceFrontEnd($page, $data);
+		$data = (new DataService())->getDataServiceFrontEnd($data);
+		// ---------------------------------------------------------------------- //
 		
-		$this->loadTemplate('index', $data);
+		$this->loadTemplate('list/index', $data);
 	}
 }
 

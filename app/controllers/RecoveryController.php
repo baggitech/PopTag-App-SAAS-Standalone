@@ -12,35 +12,29 @@ class RecoveryController extends Controller
 {
 	public function index()
 	{
-		$page = 'admin/recovery/index';
 		$data = array();
-		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceFrontEnd($data);
+		// ---------------------------------------------------------------------- //
 
 		$class_auth = new Authentication();
 		$class_auth->requireLogout();
 
-		if (!isset($_SESSION['csrf_token'])) {
-			$csrf_token = $class_auth->generateCsrfToken();
-			$_SESSION['csrf_token'] = $csrf_token;
-		}
+		// if (!isset($_SESSION['csrf_token'])) {
+		// 	$csrf_token = $class_auth->generateCsrfToken();
+		// 	$_SESSION['csrf_token'] = $csrf_token;
+		// }
 
 		require_once(__DIR__ . '/forms/recovery.php');
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/recovery/index', $data);
 	}
 
 	public function password()
 	{
-		$page = 'recovery/password';
 		$data = array();
-		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceFrontEnd($data);
+		// ---------------------------------------------------------------------- //
 
 		$class_auth = new Authentication();
 		$class_auth->requireLogout();
@@ -56,38 +50,32 @@ class RecoveryController extends Controller
 		require_once(__DIR__ . '/forms/recovery-password.php');
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/recovery/password', $data);
 	}
 
 	public function requested()
 	{
-		$page = 'recovery/requested';
 		$data = array();
-		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceFrontEnd($data);
+		// ---------------------------------------------------------------------- //
 
 		$class_auth = new Authentication();
 		$class_auth->requireLogout();
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/recovery/requested', $data);
 	}
 
 	public function changed()
 	{
-		$page = 'recovery/changed';
 		$data = array();
-		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceFrontEnd($data);
+		// ---------------------------------------------------------------------- //
 
 		$class_auth = new Authentication();
 		$class_auth->requireLogout();
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/recovery/changed', $data);
 	}
 }

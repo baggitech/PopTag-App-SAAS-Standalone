@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/09/2024 às 05:28
+-- Tempo de geração: 30/09/2024 às 22:03
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -506,16 +506,24 @@ CREATE TABLE `qrcodes` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `recovery`
+-- Estrutura para tabela `recovery_token`
 --
 
-CREATE TABLE `recovery` (
+CREATE TABLE `recovery_token` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `start_token` datetime DEFAULT NULL,
   `expiration_token` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Despejando dados para a tabela `recovery_token`
+--
+
+INSERT INTO `recovery_token` (`id`, `email`, `token`, `start_token`, `expiration_token`) VALUES
+(1, 'baggitech@gmail.com', '5fd3c754c2826607b6f21154c54b89a3', '2024-09-30 16:32:49', '2024-10-01 16:32:49'),
+(2, 'admin@gmail.com', '91086d5e32bdadad50b3a53fb234fcdd', '2024-09-30 14:54:32', '2024-10-01 14:54:32');
 
 -- --------------------------------------------------------
 
@@ -625,7 +633,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `name`, `billing`, `api_key`, `token`, `twofa_secret`, `anti_phishing_code`, `one_time_login_code`, `pending_email`, `email_activation_code`, `lost_password_code`, `type`, `verified`, `plan_id`, `plan_expiration_date`, `plan_settings`, `plan_trial_done`, `plan_expiry_reminder`, `payment_subscription_id`, `payment_processor`, `payment_total_amount`, `payment_currency`, `referral_key`, `referred_by`, `referred_by_has_converted`, `language`, `timezone`, `ip`, `country`, `last_activity`, `last_user_agent`, `total_logins`, `user_deletion_reminder`, `source`, `level`, `code_verify`) VALUES
-(1, 'admin@gmail.com', '9b267f64fbfecc6fe57a4e51ebff29ecd3b84c10863a0847279cba076f776e3c', 'AltumCode', NULL, 'cc4c27ae1085ad965050c668c1f7bb7d', '3354f2582229e32a4dd6d2cbbfc0d389ad8188a572a04923a76580c07fa2641e', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 'custom', '2030-01-01 12:00:00', '{\"additional_global_domains\":true,\"custom_url\":true,\"deep_links\":true,\"no_ads\":true,\"removable_branding\":true,\"custom_branding\":true,\"custom_colored_links\":true,\"statistics\":true,\"qr_is_enabled\":true,\"custom_backgrounds\":true,\"verified\":true,\"temporary_url_is_enabled\":true,\"seo\":true,\"utm\":true,\"fonts\":true,\"password\":true,\"sensitive_content\":true,\"leap_link\":true,\"api_is_enabled\":true,\"affiliate_is_enabled\":true,\"dofollow_is_enabled\":true,\"biolink_blocks_limit\":-1,\"projects_limit\":-1,\"pixels_limit\":-1,\"biolinks_limit\":-1,\"links_limit\":-1,\"domains_limit\":-1,\"track_links_retention\":-1,\"enabled_biolink_blocks\":{\"link\":true,\"heading\":true,\"paragraph\":true,\"avatar\":true,\"image\":true,\"socials\":true,\"mail\":true,\"soundcloud\":true,\"spotify\":true,\"youtube\":true,\"twitch\":true,\"vimeo\":true,\"tiktok\":true,\"applemusic\":true,\"tidal\":true,\"anchor\":true,\"twitter_tweet\":true,\"instagram_media\":true,\"rss_feed\":true,\"custom_html\":true,\"vcard\":true,\"image_grid\":true,\"divider\":true,\"faq\":true,\"discord\":true,\"facebook\":true,\"reddit\":true,\"audio\":true,\"video\":true,\"file\":true,\"countdown\":true,\"cta\":true,\"external_item\":true,\"share\":true,\"youtube_feed\":true}}', 0, 0, NULL, NULL, NULL, NULL, '96f3359c8a43dda4b9ad9bda57f1197f', NULL, 0, 'english', 'UTC', '::1', NULL, '2022-12-05 03:19:27', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 2, 0, 'direct', 3, '604532'),
+(1, 'admin@gmail.com', '9b267f64fbfecc6fe57a4e51ebff29ecd3b84c10863a0847279cba076f776e3c', 'AltumCode', NULL, 'cc4c27ae1085ad965050c668c1f7bb7d', 'e5133bc4ed049587807ca18b0f816e6d973acfa7da08b23ed7b27f2e0dc17c4c', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 'custom', '2030-01-01 12:00:00', '{\"additional_global_domains\":true,\"custom_url\":true,\"deep_links\":true,\"no_ads\":true,\"removable_branding\":true,\"custom_branding\":true,\"custom_colored_links\":true,\"statistics\":true,\"qr_is_enabled\":true,\"custom_backgrounds\":true,\"verified\":true,\"temporary_url_is_enabled\":true,\"seo\":true,\"utm\":true,\"fonts\":true,\"password\":true,\"sensitive_content\":true,\"leap_link\":true,\"api_is_enabled\":true,\"affiliate_is_enabled\":true,\"dofollow_is_enabled\":true,\"biolink_blocks_limit\":-1,\"projects_limit\":-1,\"pixels_limit\":-1,\"biolinks_limit\":-1,\"links_limit\":-1,\"domains_limit\":-1,\"track_links_retention\":-1,\"enabled_biolink_blocks\":{\"link\":true,\"heading\":true,\"paragraph\":true,\"avatar\":true,\"image\":true,\"socials\":true,\"mail\":true,\"soundcloud\":true,\"spotify\":true,\"youtube\":true,\"twitch\":true,\"vimeo\":true,\"tiktok\":true,\"applemusic\":true,\"tidal\":true,\"anchor\":true,\"twitter_tweet\":true,\"instagram_media\":true,\"rss_feed\":true,\"custom_html\":true,\"vcard\":true,\"image_grid\":true,\"divider\":true,\"faq\":true,\"discord\":true,\"facebook\":true,\"reddit\":true,\"audio\":true,\"video\":true,\"file\":true,\"countdown\":true,\"cta\":true,\"external_item\":true,\"share\":true,\"youtube_feed\":true}}', 0, 0, NULL, NULL, NULL, NULL, '96f3359c8a43dda4b9ad9bda57f1197f', NULL, 0, 'english', 'UTC', '::1', NULL, '2022-12-05 03:19:27', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 2, 0, 'direct', 3, '604532'),
 (34, 'baggitech@gmail.com', '9b267f64fbfecc6fe57a4e51ebff29ecd3b84c10863a0847279cba076f776e3c', 'Lazaro', NULL, NULL, '6821eaf1eff260a860692cfee009dabf1508cffa1470c0ac615607b06f1211db', NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, '', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'english', 'UTC', NULL, NULL, NULL, NULL, 0, 0, 'direct', 1, '713845');
 
 --
@@ -717,9 +725,9 @@ ALTER TABLE `qrcodes`
   ADD PRIMARY KEY (`qrcode_id`);
 
 --
--- Índices de tabela `recovery`
+-- Índices de tabela `recovery_token`
 --
-ALTER TABLE `recovery`
+ALTER TABLE `recovery_token`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -823,10 +831,10 @@ ALTER TABLE `qrcodes`
   MODIFY `qrcode_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `recovery`
+-- AUTO_INCREMENT de tabela `recovery_token`
 --
-ALTER TABLE `recovery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `recovery_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `settings`

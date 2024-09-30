@@ -1,11 +1,16 @@
 <?php
-if (isset($_POST['form_signup'])) {
-	if (!isset($_POST['captcha']) || !hash_equals($_POST['captcha_code'], $_POST['captcha'])) {
-		$error_message = "Código captcha incorreto. Por favor, tente novamente.";
-		$_SESSION['error_message'] = $error_message;
-		header("Location: " . URL_PATH . "signup");
-		exit;
-	} else {
+if (isset($_POST['form_']) && $_POST['form_'] == 'form_signup') 
+{
+    // Verifica se o token CSRF é válido
+    if (isset($_POST['token']) && !hash_equals($_SESSION['csrf_token'], $_POST['token'])) {
+
+        // Define a mensagem de erro de token inválido
+        $_SESSION['error_message'] = "Token inválido. Tente novamente.";
+        header('Location: ' . URL_PATH . 'signup');
+        exit;
+    } 
+    else 
+    {
 		$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_LOW);
 		$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 		$password = $_POST['password']; // Não é necessário filtrar

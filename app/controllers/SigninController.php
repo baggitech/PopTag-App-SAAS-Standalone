@@ -12,12 +12,10 @@ class SigninController extends Controller
 {
 	public function index()
 	{
-		$page = 'admin/signin/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
-
-		// Chama o serviço para obter os dados
 		$data = (new DataService())->getDataServiceFrontEnd($data);
+		// ---------------------------------------------------------------------- //
 
 		$class_auth = new Authentication();
 		$class_auth->requireLogout();
@@ -30,6 +28,6 @@ class SigninController extends Controller
 		require_once(__DIR__ . '/forms/signin.php');
 
 		// Carrega o template com os dados obtidos
-		$this->loadTemplate($page, $data);
+		$this->loadTemplate('admin/signin/index', $data);
 	}
 }

@@ -15,8 +15,8 @@
 
             <form action="" method="POST">
 
+              <input type="hidden" name="form_" value="signup" readonly>
               <input type="hidden" name="token" value="<?=$_SESSION['csrf_token'];?>" readonly>
-              <input type="hidden" name="form_signup" readonly>
 
               <div class="mb-3">
                 <label for="name" class="form-label">Nome completo</label>
@@ -38,7 +38,7 @@
                   <label for="image_captcha" class="form-label">Captcha</label>
                   <input type="hidden" name="captcha_code" id="captcha_code" value="<?=$_SESSION['captcha_code'];?>">
                   <div class="border rounded d-flex justify-content-center align-middle">
-                    <img src="<?= UPLOADS_PATH; ?>captcha/<?=$_SESSION['captcha_code'];?>.jpeg" alt="" width="100%" height="50">
+                    <img src="<?= URL_PATH; ?>uploads/captcha/<?=$_SESSION['captcha_code'];?>.jpeg" alt="" width="100%" height="50">
                   </div>
                 </div>
                 <div class="col">
