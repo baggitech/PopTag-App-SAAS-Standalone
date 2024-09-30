@@ -12,7 +12,7 @@ class RecoveryController extends Controller
 {
 	public function index()
 	{
-		$page = 'recovery/index';
+		$page = 'admin/recovery/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
 

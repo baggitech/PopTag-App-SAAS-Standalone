@@ -90,12 +90,11 @@ class Core
         call_user_func_array(array($c, $currentFunction), $params);
 
         // echo "<hr>";
-        // echo "CONTROLLER: ".$currentController."<br>";
-        // echo "ACTION: ".$currentFunction."<br>";
-        // echo "PARAMS: ".print_r($params, true)."<br>";
-        // echo "<hr>";
-        // echo URL_PATH."<br>";
-        // echo "<hr>";
+        // echo "<small>&nbsp;CONTROLLER: ".$currentController."<br></small>";
+        // echo "<small>&nbsp;ACTION: ".$currentFunction."<br></small>";
+        // echo "<small>&nbsp;PARAMS: ".print_r($params, true)."<br></small>";
+        // echo "<small>&nbsp;".URL_PATH."<br></small>";
+        // echo "<hr><br>";
 
     }
 }

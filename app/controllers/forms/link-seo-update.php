@@ -35,7 +35,7 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_seo_update')
             $current_image = $data['link_seo']['seo_favicon'];
             
             // Se o favicon atual for o padrão, mantém; caso contrário, mantém o favicon atual
-            if($current_image == 'image-default.png')
+            if($current_image == 'default.png')
             {
                 $seo_favicon = $current_image;
             }
@@ -66,10 +66,10 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_seo_update')
                 $link_name = $data['link']['link_name'];
         
                 // Cria o nome do arquivo favicon com base no nome do link e na extensão do arquivo
-                $seo_favicon = 'favicon-' . $link_name . '.' . $ext;
+                $seo_favicon = $link_name . '.' . $ext;
         
                 // Define o caminho local para salvar o favicon
-                $local = (__DIR__ . '/../../../uploads/favicon/');
+                $local = (__DIR__ . '/../../../biolink/uploads/favicon/');
         
                 // Verifica se já existe um arquivo com o mesmo nome e extensão
                 if (file_exists($local . $seo_favicon)) 
@@ -88,10 +88,10 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_seo_update')
                     // Verifica se já existe um arquivo com o mesmo nome mas com extensão diferente
                     foreach ($mimeToExt as $existing_mime => $existing_ext) 
                     {
-                        if (file_exists($local . 'favicon-' . $link_name . '.' . $existing_ext)) 
+                        if (file_exists($local . $link_name . '.' . $existing_ext)) 
                         {
                             // Deleta o arquivo existente com extensão diferente
-                            unlink($local . 'favicon-' . $link_name . '.' . $existing_ext);
+                            unlink($local . $link_name . '.' . $existing_ext);
                         }
                     }
         

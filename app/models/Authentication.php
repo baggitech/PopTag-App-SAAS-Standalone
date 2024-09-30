@@ -13,13 +13,22 @@ class Authentication extends Model
 	// Adiciona um token CSRF exclusivo para cada formulário
 	public function generateCsrfToken()
 	{
+		// Regenerar o ID da sessão
 		session_regenerate_id(true);
-		//$token = session_id();
-		$token = bin2hex(random_bytes(32));
+	
+		// Pegar o session_id atual
+		$sessionId = session_id();
+	
+		// Gerar um hash SHA-256 a partir do session_id
+		$token = hash('sha256', $sessionId);
+	
+		// Armazenar o token na sessão para validação posterior
 		$_SESSION['csrf_token'] = $token;
-
+	
+		// Retornar o token gerado
 		return $token;
 	}
+	
 
 	public function authLogin($email, $password, $token)
 	{
@@ -32,12 +41,15 @@ class Authentication extends Model
 		$statement->execute();
 		$user_exists = $statement->fetchColumn();
 		// Se o email não existir, retorne mensagem de erro
-		if ($user_exists == 0) {
+		if ($user_exists == 0) 
+		{
 			$error_message = "O email fornecido não existe em nosso sistema.";
 			$_SESSION['error_message'] = $error_message;
 			header("Location: " . URL_PATH . "signin");
 			exit;
-		} else {
+		} 
+		else 
+		{
 			// Verificar se o email e a senha correspondem a um registro na tabela de usuários
 			$statement = $this->db->prepare("SELECT COUNT(*) FROM users WHERE email = :email AND password = :password");
 			$statement->bindValue(":email", $email);
@@ -45,12 +57,15 @@ class Authentication extends Model
 			$statement->execute();
 			$user_password_match = $statement->fetchColumn();
 			// Se a senha não corresponder, retorne mensagem de erro
-			if ($user_password_match == 0) {
+			if ($user_password_match == 0) 
+			{
 				$error_message = "A senha fornecida não corresponde ao email fornecido.";
 				$_SESSION['error_message'] = $error_message;
 				header("Location: " . URL_PATH . "signin");
 				exit;
-			} else {
+			} 
+			else 
+			{
 				// Usar prepared statements do PDO para evitar SQL injection
 				$statement = $this->db->prepare("UPDATE users SET token = :token WHERE email = :email");
 				$statement->bindValue(':token', $token, PDO::PARAM_STR);
@@ -65,7 +80,8 @@ class Authentication extends Model
 				$user = $statement->fetch(PDO::FETCH_ASSOC);
 
 				// Verificar se a consulta SQL retorna apenas um resultado
-				if ($user !== false && $statement->rowCount() == 1) {
+				if ($user !== false && $statement->rowCount() == 1) 
+				{
 					// Criar sessões com dados encontrados
 					$_SESSION['user_id'] = $user['user_id'];
 					$_SESSION['username'] = $user['name'];
@@ -77,7 +93,9 @@ class Authentication extends Model
 					$_SESSION['token'] = $user['token'];
 
 					return true;
-				} else {
+				} 
+				else 
+				{
 					return false;
 				}
 			}
@@ -115,7 +133,8 @@ class Authentication extends Model
 	public function requireLoggedIn()
 	{
 		// Verifica se o token é válido, se o usuário está logado.
-		if (!$this->isTokenValid() || !$this->isLoggedIn()) {
+		if (!$this->isTokenValid() || !$this->isLoggedIn()) 
+		{
 			$error_message = "Precisa estar logado!";
 			$_SESSION['error_message'] = $error_message;
 			header("Location: " . URL_PATH . "signin");
@@ -126,7 +145,8 @@ class Authentication extends Model
 	public function requireLoggedInAndVerified()
 	{
 		// Verifica se o token é válido, se o usuário está logado e verificado.
-		if (!$this->isTokenValid() || !$this->isLoggedInAndVerified()) {
+		if (!$this->isTokenValid() || !$this->isLoggedInAndVerified()) 
+		{
 			$error_message = "Precisa estar verificado para continuar!";
 			$_SESSION['error_message'] = $error_message;
 			header("Location: " . URL_PATH . "verify");
@@ -137,7 +157,8 @@ class Authentication extends Model
 	public function requireLogout()
 	{
 		// Verifica se o usuário está logado, se sim, redireciona para a página inicial.
-		if ($this->isLoggedIn()) {
+		if ($this->isLoggedIn()) 
+		{
 			header("Location: " . URL_PATH . "./dashboard");
 			exit;
 		}

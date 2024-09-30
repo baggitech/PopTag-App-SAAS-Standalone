@@ -21,19 +21,17 @@
             <div class="col-3">
                 <form action="" method="POST">
 
-                    <input type="hidden" name="form_" value="block_avatar_enabledDisabled" readonly>
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? ''; ?>" readonly>
-                    <input type="hidden" name="link_id" value="<?php echo $link['link_id'] ?? ''; ?>" readonly>
-                    <input type="hidden" name="avatar_id" value="<?php echo $block_avatar['avatar_id'] ?? ''; ?>" readonly>
-
+                    <div class="hidden mb-3">
+                        <input type="text" name="form_" class="form-control mb-1 readonly-field" value="block_avatar_enabledDisabled" readonly>
+                        <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                        <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                        <input type="text" name="avatar_id" class="form-control mb-1 readonly-field" value="<?php echo $block_avatar['avatar_id'] ?? ''; ?>" readonly>
+                    </div>
                     <div class="form-check form-switch">
-
                         <input type="checkbox" class="form-check-input" role="switch" name="avatar_is_enabled" id="statusChecked" onChange="this.form.submit()" value="1" <?php echo ($block_avatar['avatar_is_enabled'] == 1) ? 'checked' : ''; ?>>
-
                         <label class="form-check-label text-3" for="statusChecked">
                             <?php echo ($block_avatar['avatar_is_enabled'] == 1) ? 'Ativo' : 'Inativo'; ?>
                         </label>
-
                     </div>
 
                 </form>
@@ -61,12 +59,14 @@
                         </li>
                         <li>
                             <form action="" method="POST">
-                                <input type="hidden" name="form_" value="block_avatar_delete" readonly>
-                                <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? ''; ?>" readonly>
-                                <input type="hidden" name="link_id" value="<?php echo $block['link_id'] ?? ''; ?>" readonly>
-                                <input type="hidden" name="block_id" value="<?php echo $block['block_id'] ?? ''; ?>" readonly>
-                                <input type="hidden" name="avatar_id" value="<?php echo $block_avatar['avatar_id'] ?? ''; ?>" readonly>
-                                <input type="hidden" name="avatar_image" value="<?php echo $block_avatar['avatar_image'] ?? ''; ?>" readonly>
+                                <div class="hidden mb-3">
+                                    <input type="text" name="form_" class="form-control mb-1 readonly-field" value="block_avatar_delete" readonly>
+                                    <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                                    <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                                    <input type="text" name="avatar_id" class="form-control mb-1 readonly-field" value="<?php echo $block_avatar['avatar_id'] ?? ''; ?>" readonly>
+                                    <input type="text" name="block_id" class="form-control mb-1 readonly-field" value="<?php echo $block['block_id'] ?? ''; ?>" readonly>
+                                    <input type="text" name="avatar_image" class="form-control mb-1 readonly-field" value="<?php echo $block_avatar['avatar_image'] ?? ''; ?>" readonly>
+                                </div>
                                 <button type="submit" class="dropdown-item">
                                     <i class="fa fa-fw fa-sm fa-trash-alt me-2"></i> Deletar
                                 </button>
@@ -83,17 +83,19 @@
                 <div class="col-lg-12">
                     <form action="" method="POST" role="form" enctype="multipart/form-data" id="form_update_avatar">
 
-                        <input type="hidden" name="form_" value="block_avatar_update" readonly>
-                        <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? ''; ?>" readonly>
-                        <input type="hidden" name="link_id" value="<?php echo $block['link_id'] ?? ''; ?>" readonly>
-                        <input type="hidden" name="block_id" value="<?php echo $block['block_id'] ?? ''; ?>" readonly>
-                        <input type="hidden" name="avatar_id" value="<?php echo $block_avatar['avatar_id'] ?? ''; ?>" readonly>
+                        <div class="hidden mb-3">
+                            <input type="text" name="form_" class="form-control mb-1 readonly-field" value="block_avatar_update" readonly>
+                            <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                            <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                            <input type="text" name="block_id" class="form-control mb-1 readonly-field" value="<?php echo $block['block_id'] ?? ''; ?>" readonly>
+                            <input type="text" name="avatar_id" class="form-control mb-1 readonly-field" value="<?php echo $block_avatar['avatar_id'] ?? ''; ?>" readonly>
+                        </div>
 
                         <div class="notification-container"></div>
 
                         <div class="col-12 form-group mb-3">
                             <div class="mt-1">
-                                <img src="<?= URL_PATH; ?>uploads/biolink/<?php echo $block_avatar['avatar_image']; ?>" class="rounded" height="100">
+                                <img src="<?= URL_PATH; ?>biolink/uploads/avatar/<?php echo $block_avatar['avatar_image']; ?>" class="rounded" height="100">
                             </div>
                             <label for="avatar_image" class="form-label text-muted">
                                 <i class="fas fa-fw fa-image fa-sm text-muted"></i> Image
@@ -167,26 +169,21 @@
                             <label class="form-check-label" for="robots">Abrir em uma nova aba</label><br>
                         </div>
 
+                        <h5 class="text-muted mb-3">
+                            <i class="fas fa-fw fa-square-full fa-sm mr-1"></i> Border settings:
+                        </h5>
+
                         <div class="col-12 form-group mb-3" data-range-counter="" data-range-counter-suffix="px">
                             <label for="avatar_border_width" class="d-flex justify-content-between align-items-center text-muted mb-2">
                                 <span>
                                     <i class="fas fa-fw fa-border-style fa-sm text-muted mr-1"></i> Border width
                                 </span>
-                                <small id="range_counter" class="text-muted" data-range-counter-wrapper=""><?php echo $block_avatar['avatar_border_width'] ?? '0'; ?>px</small>
+                                <small id="range_counter" class="text-muted" data-range-counter-wrapper="">
+                                    <?php echo $block_avatar['avatar_border_width'] ?? '0'; ?>px
+                                </small>
                             </label>
-                            <input id="avatar_border_width" type="range" min="0" max="15" class="form-range" name="avatar_border_width" value="<?= $block_avatar['avatar_border_width'] ?? '0'; ?>">
+                            <input id="avatar_border_width" type="range" min="0" max="5" class="form-range" name="avatar_border_width" value="<?= $block_avatar['avatar_border_width'] ?? '0'; ?>">
                         </div>
-
-                        <script>
-                            const formRanger = document.getElementById('avatar_border_width');
-                            const valorSpan = document.getElementById('range_counter');
-
-                            // Atualiza o valor exibido sempre que o form-ranger for alterado
-                            formRanger.addEventListener('input', function() {
-                                valorSpan.textContent = formRanger.value + 'px';
-                            });
-                        </script>
-
 
                         <div class="col-12 form-group mb-3">
                             <label for="block_border_color" class="text-muted mb-2">
@@ -195,7 +192,6 @@
                                 <input type="color" id="avatar_border_color" name="avatar_border_color" class="pcr-button" value="<?php echo $block_avatar['avatar_border_color'] ?? 'white'; ?>" required="required">
                             </div>
                         </div>
-
 
                         <div class="col-12 form-group mb-3">
                             <label for="avatar_border_radius" class="form-label text-muted">
@@ -223,13 +219,16 @@
                             </select>
                         </div>
 
+                        <h5 class="text-muted mb-3">
+                            <i class="fas fa-fw fa-cloud fa-sm mr-1"></i> Border shadow settings:
+                        </h5>
+
                         <div class="d-flex gap-2 justify-content-end mt-4">
                             <button type="button" class="btn btn-primary btn-md btn-primary-modified" onclick="limparCampos()">Limpar Formulário</button>
                             <button type="submit" class="btn btn-primary btn-md btn-primary-modified">
                                 <i class="fa fa-save me-2"></i> Salvar
                             </button>
                         </div>
-                        
 
                     </form>
                 </div>
@@ -239,6 +238,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    const formRanger = document.getElementById('avatar_border_width');
+    const valorSpan = document.getElementById('range_counter');
+
+    // Atualiza o valor exibido sempre que o form-ranger for alterado
+    formRanger.addEventListener('input', function() {
+        valorSpan.textContent = formRanger.value + 'px';
+    });
+</script>
 
 <script>
     function limparCampos() {
@@ -283,4 +292,3 @@
         }
     }
 </script>
-

@@ -23,9 +23,9 @@
                     <form action="" method="POST" enctype="multipart/form-data">
 
                         <div class="hidden mb-3">
-                            <input type="text" name="form_" class="form-control ev1 mb-1" value="link_name_update" readonly>
-                            <input type="text" name="token" class="form-control ev1 mb-1" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
-                            <input type="text" name="link_id" class="form-control ev1 mb-1" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                            <input type="text" name="form_" class="form-control mb-1 readonly-field" value="link_name_update" readonly>
+                            <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                            <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
                         </div>
 
                         <label for="url" class="form-label text-muted mb-2">

@@ -23,9 +23,9 @@
                     <form action="" method="POST" enctype="multipart/form-data">
 
                         <div class="hidden mb-3">
-                            <input type="text" name="form_" class="form-control ev1 mb-1" value="link_background_update" readonly>
-                            <input type="text" name="token" class="form-control ev1 mb-1" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
-                            <input type="text" name="link_id" class="form-control ev1 mb-1" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                            <input type="text" name="form_" class="form-control mb-1 readonly-field" value="link_background_update" readonly>
+                            <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                            <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
                         </div>
 
                         <div class="form-group mb-3">
@@ -144,9 +144,9 @@
                                     </small><br>
                                     <div class="mt-1">
                                         <?php if ($link_background['background_image']): ?>
-                                            <img src="<?= UPLOADS_PATH; ?>biolink/<?= $link_background['background_image']; ?>" height="150" width="90">
+                                            <img src="<?= URL_PATH; ?>biolink/uploads/background/<?= $link_background['background_image']; ?>" height="150" width="90">
                                         <?php else: ?>
-                                            <img src="<?= UPLOADS_PATH; ?>biolink/background-default.png" height="150">
+                                            <img src="<?= URL_PATH; ?>uploads/background/default.png" height="150">
                                         <?php endif; ?>
                                     </div>
                                 </div>

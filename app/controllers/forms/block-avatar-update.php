@@ -46,7 +46,7 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'block_avatar_update')
             $current_image = $data['block_avatar']['avatar_image'];
 
             // Se o avatar atual for o padrão, mantém; caso contrário, mantém o avatar atual
-            if ($current_image == 'avatar-default.png') {
+            if ($current_image == 'default.png') {
                 $avatar_image = $current_image;
             } else {
                 $avatar_image = $data['block_avatar']['avatar_image'];
@@ -72,10 +72,10 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'block_avatar_update')
                 $link_name = $data['link']['link_name'];
 
                 // Cria o nome do arquivo favicon com base no nome do link e na extensão do arquivo
-                $avatar_image = 'avatar-' . $link_name . '.' . $ext;
+                $avatar_image = $link_name . '.' . $ext;
 
                 // Define o caminho local para salvar o favicon
-                $local = (__DIR__ . '/../../../uploads/biolink/');
+                $local = (__DIR__ . '/../../../biolink/uploads/avatar/');
 
                 // Verifica se já existe um arquivo com o mesmo nome e extensão
                 if (file_exists($local . $avatar_image)) {
@@ -89,9 +89,9 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'block_avatar_update')
                 } else {
                     // Verifica se já existe um arquivo com o mesmo nome mas com extensão diferente
                     foreach ($mimeToExt as $existing_mime => $existing_ext) {
-                        if (file_exists($local . 'avatar-' . $link_name . '.' . $existing_ext)) {
+                        if (file_exists($local . $link_name . '.' . $existing_ext)) {
                             // Deleta o arquivo existente com extensão diferente
-                            unlink($local . 'avatar-' . $link_name . '.' . $existing_ext);
+                            unlink($local . $link_name . '.' . $existing_ext);
                         }
                     }
 

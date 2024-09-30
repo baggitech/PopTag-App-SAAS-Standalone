@@ -92,7 +92,7 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_background_update')
 
 				if($current_background_image !== null)
 				{
-			       	$filePath = __DIR__ . '/../../../uploads/biolink/' . $current_background_image;
+			       	$filePath = __DIR__ . '/../../../biolink/uploads/background/' . $current_background_image;
 
 				    if (file_exists($filePath)) 
 				    {
@@ -116,7 +116,7 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_background_update')
 
 				if($background_image !== null)
 				{
-                    $filePath = __DIR__ . '/../../../uploads/biolink/' . $current_background_image;
+                    $filePath = __DIR__ . '/../../../biolink/uploads/background/' . $current_background_image;
 
 				    if (file_exists($filePath)) 
 				    {
@@ -154,8 +154,8 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_background_update')
 				        if($mime == 'image/jpeg') {$ext = 'jpeg';}
 				        elseif($mime == 'image/png') {$ext = 'png';}
 				        elseif($mime == 'image/gif') {$ext = 'gif';}
-				        $background_image = 'background-'.$link_name.'.'.$ext;
-				        $local = (__DIR__ . '/../../../uploads/biolink/');
+				        $background_image = $link_name.'.'.$ext;
+				        $local = (__DIR__ . '/../../../biolink/uploads/background/');
 				        move_uploaded_file($path_tmp, $local . $background_image);
 				    }	    			
 			   	}

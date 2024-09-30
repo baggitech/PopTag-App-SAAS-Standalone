@@ -42,13 +42,6 @@ function getBaseUrl()
 // Chama a função para obter a URL base da aplicação e a armazena em $base_url.
 $base_url = getBaseUrl();
 
-// Informaçõe da app
-define('POPTAG',  1);
-define('SOFTWARE_NAME', 'PopTag');
-define('SOFTWARE_AUTHOR', 'BAGGITECH');
-define('SOFTWARE_URL', 'https://poptag.app');
-define('SOFTWARE_VERSION', '1.0');
-
 // Define a constante URL_PATH com o caminho base da aplicação.
 define('URL_PATH', $base_url);
 define('ASSETS_PATH', $base_url . 'assets/');
@@ -88,7 +81,7 @@ define('MODELS_DIR', __DIR__ . '/models/');
 define('HELPERS_DIR', __DIR__ . '/helpers/');
 define('INCLUDES_DIR', __DIR__ . '/includes/');
 define('CONTROLLERS_DIR', __DIR__ . '/controllers/');
-define('VENDOR_DIR', __DIR__ . '/../vendor/');
+//define('VENDOR_DIR', __DIR__ . '/../vendor/');
 
 // Cria um array para armazenar as classes já carregadas
 $loaded_classes = array();
@@ -108,8 +101,8 @@ spl_autoload_register(function ($class) use (&$loaded_classes)
         MODELS_DIR,
         HELPERS_DIR,
         INCLUDES_DIR,
-        CONTROLLERS_DIR,
-        VENDOR_DIR
+        CONTROLLERS_DIR
+        //VENDOR_DIR
     );
 
     // Percorre os diretórios e subdiretórios em busca da classe

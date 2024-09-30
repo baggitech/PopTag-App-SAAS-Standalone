@@ -23,9 +23,9 @@
                     <form action="" method="POST" enctype="multipart/form-data">
 
                         <div class="hidden mb-3">
-                            <input type="text" name="form_" class="form-control ev1 mb-1" value="link_seo_update" readonly>
-                            <input type="text" name="token" class="form-control ev1 mb-1" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
-                            <input type="text" name="link_id" class="form-control ev1 mb-1" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+                            <input type="text" name="form_" class="form-control mb-1 readonly-field" value="link_seo_update" readonly>
+                            <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+                            <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
                         </div>
 
                         <div class="form-check form-switch mb-3">
@@ -70,9 +70,9 @@
                             </small><br>
                             <div class="mt-2">
                                 <?php if ($link_seo['seo_favicon']): ?>
-                                    <img src="<?= UPLOADS_PATH; ?>favicon/<?= $link_seo['seo_favicon'] ?? ''; ?>" height="48" width="48">
+                                    <img src="<?= URL_PATH; ?>biolink/uploads/favicon/<?= $link_seo['seo_favicon'] ?? ''; ?>" height="48" width="48">
                                 <?php else: ?>
-                                    <img src="<?= UPLOADS_PATH; ?>favicon/favicon-default.png" height="48" width="48">
+                                    <img src="<?= URL_PATH; ?>uploads/favicon/default.png" height="48" width="48">
                                 <?php endif; ?>
                                 <p class="form-check text-2 mb-2 text-muted">
                                     <input type="checkbox" name="seo_favicon_del" class="form-check-input" value="delete_favicon"> Marque aqui se quiser deletar o favicon.

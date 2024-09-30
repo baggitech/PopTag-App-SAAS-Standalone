@@ -24,7 +24,7 @@ require_once(__DIR__ . '/includes/data_server.php');
     <meta name="mssmarttagspreventparsing" content="true">
     <meta name="organization name" content="poptag.app">
     <meta name="author" content="poptag">    
-    <meta name="msapplication-TileImage" content="https://<?= $result['domain_name'] ?? ''; ?>/uploads/biolink/<?= $result['avatar_image' ?? '']; ?>">
+    <meta name="msapplication-TileImage" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>">
     <meta name="msapplication-TileColor" content="<?= $result['background_color_one'] ?? ''; ?>">
     <meta name="theme-color" content="<?= $result['background_color_two'] ?? ''; ?>">
 
@@ -36,15 +36,15 @@ require_once(__DIR__ . '/includes/data_server.php');
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="<?= $result['seo_title'] ?? ''; ?>">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://<?= $result['domain_name'] ?? ''; ?>/uploads/biolink/<?= $result['avatar_image' ?? '']; ?>">
-    <meta property="og:url" content="https://<?= $result['domain_name'] ?? ''; ?>/biolink/<?= $result['link_name'] ?? ''; ?>">    
+    <meta property="og:image" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>">
+    <meta property="og:url" content="<?=URL_PATH;?><?= $result['link_name'] ?? ''; ?>">    
     <meta property="og:description" content="<?= $result['seo_meta_description'] ?? ''; ?>">    
 
     <!-- Open Graph / Twitter -->
     <meta property="twitter:title" content="<?= $result['seo_title'] ?? ''; ?>">
     <meta property="twitter:type" content="website">
-    <meta property="twitter:image:src" content="https://<?= $result['domain_name'] ?? ''; ?>/uploads/biolink/<?= $result['avatar_image' ?? '']; ?>">
-    <meta property="twitter:url" content="https://<?= $result['domain_name'] ?? ''; ?>/biolink/<?= $result['link_name'] ?? ''; ?>">    
+    <meta property="twitter:image:src" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>">
+    <meta property="twitter:url" content="<?=URL_PATH;?><?= $result['link_name'] ?? ''; ?>">    
     <meta property="twitter:description" content="<?= $result['seo_meta_description'] ?? ''; ?>">
     <!-- Verificar para que serve abaixo: -->
     <meta name="twitter:card" content="">
@@ -55,19 +55,18 @@ require_once(__DIR__ . '/includes/data_server.php');
     <link rel="canonical" href="<?= URL_PATH; ?><?= $result['link_name'] ?? ''; ?>">
     <!-- <link rel="manifest" href="<?= URL_PATH; ?>manifest.json"> -->
 
-    <link rel="icon" type="image/png" href="https://<?= $result['domain_name'] ?? ''; ?>/uploads/biolink/<?= $result['avatar_image' ?? '']; ?>">
+    <link rel="icon" type="image/png" href="<?=URL_PATH;?>uploads/favicon/<?= $result['avatar_image' ?? '']; ?>">
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="144x144" href="images/favicon-144x144.png"> -->
 
-    <link href="assets/css/bootstrap.min.css?v=4900" rel="stylesheet" media="screen,print">
-    <!-- <link href="assets/css/custom.css?v=4900" rel="stylesheet" media="screen,print"> -->
-    <link href="assets/css/link-custom.css?v=4900" rel="stylesheet" media="screen,print">
-    <link href="assets/css/animate.min.css?v=4900" rel="stylesheet" media="screen,print">
+    <link href="assets/css/bootstrap.min.css?v=1.0.0" rel="stylesheet" media="screen,print">
+    <link href="assets/css/link-custom.css?v=1.0.0" rel="stylesheet" media="screen,print">
+    <link href="assets/css/animate.min.css?v=1.0.0" rel="stylesheet" media="screen,print">
 
-    <?php require_once(__DIR__ . '/assets/css/biolink-style.php'); ?>
+    <?php require_once(__DIR__ . '/includes/link-custom.php'); ?>
 
 
 </head>
@@ -106,7 +105,7 @@ require_once(__DIR__ . '/includes/data_server.php');
                         <div id="biolink_block_id_3898" data-biolink-block-id="3898" class="col-12 my-2">
                             <div class="d-flex flex-column align-items-center">
                                 <a href="<?= $result['avatar_location_url'] ?? '#'; ?>" data-track-biolink-block-id="3865" target="<?= $result['avatar_target_link' ?? '']; ?>">
-                                    <img src="https://<?= $result['domain_name'] ?? ''; ?>/uploads/biolink/<?= $result['avatar_image' ?? '']; ?>" class="link-image link-avatar-<?= $result['avatar_border_radius' ?? '']; ?>" style="width: <?= $result['avatar_width' ?? '']; ?>; height: <?= $result['avatar_height' ?? '']; ?>; border-width: <?= $result['avatar_border_width' ?? '']; ?>px; border-color: <?= $result['avatar_border_color' ?? '']; ?>; border-style: <?= $result['avatar_border_style' ?? '']; ?>; object-fit: <?= $result['avatar_object_fit' ?? '']; ?>;" alt="<?= $result['avatar_image_alt'] ?? ''; ?>" loading="lazy" data-border-width="" data-border-avatar-radius="" data-border-style="" data-border-color="" data-avatar="" />
+                                    <img src="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>" class="link-image link-avatar-<?= $result['avatar_border_radius' ?? '']; ?>" style="width: <?= $result['avatar_width' ?? '']; ?>; height: <?= $result['avatar_height' ?? '']; ?>; border-width: <?= $result['avatar_border_width' ?? '']; ?>px; border-color: <?= $result['avatar_border_color' ?? '']; ?>; border-style: <?= $result['avatar_border_style' ?? '']; ?>; object-fit: <?= $result['avatar_object_fit' ?? '']; ?>;" alt="<?= $result['avatar_image_alt'] ?? ''; ?>" loading="lazy" data-border-width="" data-border-avatar-radius="" data-border-style="" data-border-color="" data-avatar="" />
                                 </a>
                             </div>
                         </div>
@@ -131,12 +130,12 @@ require_once(__DIR__ . '/includes/data_server.php');
 
 </body>
 
-<script src="assets/js/jquery.min.js?v=4900"></script>
-<script src="assets/js/popper.min.js?v=4900"></script>
-<script src="assets/js/bootstrap.min.js?v=4900"></script>
-<script src="assets/js/custom.js?v=4900"></script>
-<script src="assets/js/fontawesome.min.js?v=4900"></script>
-<script src="assets/js/fontawesome-solid.min.js?v=4900"></script>
-<script src="assets/js/fontawesome-brands.min.js?v=4900"></script>
+<script src="assets/js/jquery.min.js?v=1.0.0"></script>
+<script src="assets/js/popper.min.js?v=1.0.0"></script>
+<script src="assets/js/bootstrap.min.js?v=1.0.0"></script>
+<script src="assets/js/custom.js?v=1.0.0"></script>
+<script src="assets/js/fontawesome.min.js?v=1.0.0"></script>
+<script src="assets/js/fontawesome-solid.min.js?v=1.0.0"></script>
+<script src="assets/js/fontawesome-brands.min.js?v=1.0.0"></script>
 
 </html>

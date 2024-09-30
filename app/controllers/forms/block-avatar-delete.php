@@ -31,7 +31,7 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'block_avatar_delete')
             if ($delete_block) 
             {
                 // Caminho absoluto para o arquivo de imagem a ser excluído
-                $filePath = __DIR__ . '/../../../uploads/biolink/' . $avatar_image;
+                $filePath = __DIR__ . '/../../../biolink/uploads/avatar/' . $avatar_image;
 
                 if (file_exists($filePath)) 
                 {

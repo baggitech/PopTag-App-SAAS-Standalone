@@ -82,10 +82,10 @@
 
 <body>
 
-  <!-- Start Preloader -->
+  <!-- Start Preloader
   <div id="preloader">
     <div data-loader="dual-ring"></div>
-  </div>
+  </div> -->
   <!-- End Preloader -->
 
   <div id="main-wrapper">

@@ -315,6 +315,7 @@ form .btn-primary:active {
 .share-button:hover {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    background-color: #0006;
     color: white;
 }
 

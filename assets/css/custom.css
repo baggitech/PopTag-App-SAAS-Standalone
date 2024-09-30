@@ -55,9 +55,9 @@ body {
 
 /* #######################################################################################*/
 
-/* .hidden {
+.hidden {
   display: none;
-} */
+}
 
 .ev1 {
   border: 1px dashed red;
@@ -65,6 +65,16 @@ body {
 
 .ev2 {
   border: 1px dashed green;
+}
+
+.readonly-field {
+  background-color: #e9ecef; /* Cor acinzentada */
+  color: #6c757d; /* Texto também acinzentado */
+  cursor: not-allowed; /* Cursor desabilitado */
+}
+
+.readonly-field:focus {
+  outline: none; /* Remove a borda de foco */
 }
 
 

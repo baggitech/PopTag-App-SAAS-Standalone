@@ -232,15 +232,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-4">
-
         <form action="" method="POST" role="form" enctype="multipart/form-data">
-
-          <input type="hidden" name="form_" value="block_avatar_create" readonly>
-          <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" readonly>
-          <input type="hidden" name="link_id" value="<?php echo $_SESSION['link_id']; ?>" readonly>
-
+          <div class="hidden mb-3">
+            <input type="text" name="form_" class="form-control mb-1 readonly-field" value="block_avatar_create" readonly>
+            <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+            <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+          </div>
           <div class="notification-container"></div>
-
           <div class="col-12 form-group mb-3">
             <label for="avatar_image" class="form-label text-muted">
               <i class="fas fa-fw fa-image fa-sm text-muted"></i> Image
@@ -250,7 +248,6 @@
               .jpg, .jpeg, .png, .svg, .gif, .webp allowed. 2 MB maximum.
             </small>
           </div>
-
           <div class="col-12">
             <div class="row">
               <div class="col-6 form-group mb-3">
@@ -277,7 +274,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-12 form-group mb-3">
             <label for="avatar_border_radius" class="form-label text-muted">
               <i class="fas fa-fw fa-border-all fa-sm text-muted"></i> Border Radius
@@ -289,13 +285,10 @@
               <option value="pill">Pill</option>
             </select>
           </div>
-
           <div class="col-12 d-grid mt-4">
             <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
-
         </form>
-
       </div>
     </div>
   </div>
@@ -311,19 +304,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-4">
-
-        <form action="" method="post" role="form">
-
-          <!-- form_block_create_heading -->
-
-          <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" readonly>
-          <input type="hidden" name="form_block_create_heading" readonly>
-          <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>" readonly>
-          <input type="hidden" name="link_id" value="<?php echo $_SESSION['link_id']; ?>" readonly>
-          <input type="hidden" name="block_type" value="heading" readonly>
-
+        <form action="" method="POST" role="form" enctype="multipart/form-data">
+          <div class="hidden mb-3">
+            <input type="text" name="form_" class="form-control mb-1 readonly-field" value="form_block_create_heading" readonly>
+            <input type="text" name="token" class="form-control mb-1 readonly-field" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+            <input type="text" name="link_id" class="form-control mb-1 readonly-field" value="<?= $link['link_id'] ?? ''; ?>" readonly>
+          </div>
           <div class="notification-container"></div>
-
           <div class="col-12 mb-3">
             <div class="form-group">
               <label for="heading_heading_type">
@@ -339,7 +326,6 @@
               </select>
             </div>
           </div>
-
           <div class="col-12 mb-3">
             <div class="form-group">
               <label for="heading_text">
@@ -348,13 +334,10 @@
               <input id="heading_text" type="text" class="form-control" name="heading_text" maxlength="256" />
             </div>
           </div>
-
           <div class="col-12 d-grid mt-4">
             <button type="submit" name="form_block_heading" value="create" class="btn btn-primary">Adicionar</button>
           </div>
-
         </form>
-
       </div>
     </div>
   </div>

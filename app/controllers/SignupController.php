@@ -13,7 +13,7 @@ class SignupController extends Controller
 	// START - PAGE SIGNUP
 	public function index()
 	{
-		$page = 'signup/index';
+		$page = 'admin/signup/index';
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
 
