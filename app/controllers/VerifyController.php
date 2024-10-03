@@ -14,13 +14,13 @@ class VerifyController extends Controller
 	{
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
-		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
+		$data = (new DataService())->getDataServiceFrontEnd($data);
 		// ---------------------------------------------------------------------- //
 
 		$class_user = new User();
 		$data['user'] = $class_user->getUser($user_id);
 
-		//require_once(__DIR__ . '/forms/verify.php');
+		require_once(__DIR__ . '/forms/verify.php');
 
 		// Carrega o template com os dados obtidos
 		$this->loadTemplate('admin/verify/index', $data);

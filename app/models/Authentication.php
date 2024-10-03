@@ -135,8 +135,7 @@ class Authentication extends Model
 		// Verifica se o token é válido, se o usuário está logado.
 		if (!$this->isTokenValid() || !$this->isLoggedIn()) 
 		{
-			$error_message = "Precisa estar logado!";
-			$_SESSION['error_message'] = $error_message;
+			$_SESSION['error_message'] = "Precisa estar logado!";
 			header("Location: " . URL_PATH . "signin");
 			exit;
 		}
@@ -147,8 +146,7 @@ class Authentication extends Model
 		// Verifica se o token é válido, se o usuário está logado e verificado.
 		if (!$this->isTokenValid() || !$this->isLoggedInAndVerified()) 
 		{
-			$error_message = "Precisa estar verificado para continuar!";
-			$_SESSION['error_message'] = $error_message;
+			$_SESSION['error_message'] = "Precisa estar verificado para continuar!";
 			header("Location: " . URL_PATH . "verify");
 			exit;
 		}

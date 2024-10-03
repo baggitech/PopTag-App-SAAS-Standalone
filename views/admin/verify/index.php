@@ -28,11 +28,9 @@
 
               <div class="input-group mb-3">
                 <input type="text" name="code_verify" id="code_verify" class="form-control" value="" placeholder="Código">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <span class="fas fa-check"></span>
-                  </div>
-                </div>
+                <!-- <button class="btn btn-secondary" type="submit" id="button-addon2">
+                  <span class="fas fa-check"></span>
+                </button> -->
               </div>
               <div class="d-grid mb-3">
                 <button type="submit" class="btn btn-primary btn-block">Ativar conta</button>

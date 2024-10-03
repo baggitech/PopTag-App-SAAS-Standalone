@@ -13,7 +13,6 @@ class HomeController extends Controller
 	public function index()
 	{
 		$data = array();
-		$user_id = $_SESSION['user_id'] ?? null;
 		$data = (new DataService())->getDataServiceFrontEnd($data);
 		// ---------------------------------------------------------------------- //
 

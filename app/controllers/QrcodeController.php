@@ -18,7 +18,7 @@ class QrcodeController extends Controller
 		// ---------------------------------------------------------------------- //
 
 		$class_link = new Link();
-		$data['links'] = $class_link->getLinksJoinDomainsByUserId($user_id);
+		$data['links'] = $class_link->getLinksAndDomainsByUserId($user_id);
 
 		$class_qrcode = new QRCodeCustom();
 		$data['qrcodes'] = $class_qrcode->getQRCodesJoinsLinksByUserId($user_id);
@@ -44,8 +44,8 @@ class QrcodeController extends Controller
 		$qrcode_id = $_SESSION['qrcode_id'] ?? null;
 
 		$class_link = new Link();
-		$data['link'] = $class_link->getLinkJoinsAllTablesByLinkId($link_id);
-		$data['links'] = $class_link->getLinksJoinDomainsByUserId($user_id);
+		$data['link'] = $class_link->getAllTablesByLinkId($link_id);
+		//$data['links'] = $class_link->getLinksAndDomainsByUserId($user_id);
 
 		$class_qrcode = new QRCodeCustom();
 		$data['qrcode'] = $class_qrcode->getQRCodeByQRCodeId($qrcode_id);

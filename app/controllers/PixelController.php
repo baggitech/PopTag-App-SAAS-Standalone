@@ -18,7 +18,7 @@ class PixelController extends Controller
 		// ---------------------------------------------------------------------- //
 
 		$class_link = new Link();
-		$data['links'] = $class_link->getLinksJoinDomainsByUserId($user_id);
+		$data['links'] = $class_link->getLinksAndDomainsByUserId($user_id);
 
 		$class_pixel = new Pixel();
 		$data['pixels'] = $class_pixel->getPixelsJoinLinksByUserId($user_id);
@@ -45,8 +45,8 @@ class PixelController extends Controller
 		$pixel_id = $_SESSION['pixel_id'] ?? null;
 
 		$class_link = new Link();
-		$data['link'] = $class_link->getLinkJoinsAllTablesByLinkId($link_id);
-		$data['links'] = $class_link->getLinksJoinDomainsByUserId($user_id);
+		$data['link'] = $class_link->getAllTablesByLinkId($link_id);
+		//$data['links'] = $class_link->getLinksAndDomainsByUserId($user_id);
 
 		$class_pixel = new Pixel();
 		$data['pixel'] = $class_pixel->getPixelByPixelId($pixel_id);

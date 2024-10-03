@@ -50,7 +50,7 @@
 
       <!-- Left Panel -->
       <aside class="col-12 col-lg-3">
-        <?php require_once(__DIR__ . '/../partials/aside.php'); ?>
+        <?php require_once(__DIR__ . '/../../partials/aside.php'); ?>
       </aside>
       <!-- Left Panel End -->
 
