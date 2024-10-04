@@ -23,7 +23,7 @@
 
             <form action="" method="POST">
 
-              <input type="hidden" name="token" value="<?= $_SESSION['csrf_token']; ?>" readonly>
+              <input type="hidden" name="token" value="<?= $_SESSION['csrf_token'] ?? ''; ?>" readonly>
               <input type="hidden" name="form_verify" readonly>
 
               <div class="input-group mb-3">

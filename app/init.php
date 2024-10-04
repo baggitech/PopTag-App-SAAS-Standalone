@@ -48,17 +48,18 @@ define('ASSETS_PATH', $base_url . 'assets/');
 define('VENDOR_PATH', $base_url . 'vendor/');
 define('UPLOADS_PATH', $base_url . 'uploads/');
 define('COOKIE_PATH', preg_replace('|https?://[^/]+|i', '', URL_PATH));
+unset($base_url);
 
-// Verifica se a sessão já está ativa
 // Verifica se a sessão já está ativa
 if (session_status() !== PHP_SESSION_ACTIVE) 
 {
     // Define o caminho onde os arquivos de sessão serão armazenados
-    session_save_path(__DIR__ . '/../cookies');  // Salva os arquivos de sessão na pasta 'cookies'
+    // Salva os arquivos de sessão na pasta 'cookies'
+    session_save_path(__DIR__ . '/../cookies');  
 
     // Define as configurações do cookie de sessão
     $options = [
-        'lifetime' => 20,
+        'lifetime' => null,
         'path' => COOKIE_PATH,
         //'domain' => $base_url,
         'secure' => true,
@@ -73,11 +74,6 @@ if (session_status() !== PHP_SESSION_ACTIVE)
     ob_start();
     session_start();
 }
-
-
-// Como a variável $base_url não é mais necessária após a definição 
-// da constante remove-se a variável não utilizada.
-unset($base_url);
 
 // -------------------------------------------------------------------
 

@@ -15,20 +15,20 @@ class Authentication extends Model
 	{
 		// Regenerar o ID da sessão
 		session_regenerate_id(true);
-	
+
 		// Pegar o session_id atual
 		$sessionId = session_id();
-	
+
 		// Gerar um hash SHA-256 a partir do session_id
 		$token = hash('sha256', $sessionId);
-	
+
 		// Armazenar o token na sessão para validação posterior
 		$_SESSION['csrf_token'] = $token;
-	
+
 		// Retornar o token gerado
 		return $token;
 	}
-	
+
 
 	public function authLogin($email, $password, $token)
 	{
@@ -41,15 +41,12 @@ class Authentication extends Model
 		$statement->execute();
 		$user_exists = $statement->fetchColumn();
 		// Se o email não existir, retorne mensagem de erro
-		if ($user_exists == 0) 
-		{
+		if ($user_exists == 0) {
 			$error_message = "O email fornecido não existe em nosso sistema.";
 			$_SESSION['error_message'] = $error_message;
 			header("Location: " . URL_PATH . "signin");
 			exit;
-		} 
-		else 
-		{
+		} else {
 			// Verificar se o email e a senha correspondem a um registro na tabela de usuários
 			$statement = $this->db->prepare("SELECT COUNT(*) FROM users WHERE email = :email AND password = :password");
 			$statement->bindValue(":email", $email);
@@ -57,15 +54,12 @@ class Authentication extends Model
 			$statement->execute();
 			$user_password_match = $statement->fetchColumn();
 			// Se a senha não corresponder, retorne mensagem de erro
-			if ($user_password_match == 0) 
-			{
+			if ($user_password_match == 0) {
 				$error_message = "A senha fornecida não corresponde ao email fornecido.";
 				$_SESSION['error_message'] = $error_message;
 				header("Location: " . URL_PATH . "signin");
 				exit;
-			} 
-			else 
-			{
+			} else {
 				// Usar prepared statements do PDO para evitar SQL injection
 				$statement = $this->db->prepare("UPDATE users SET token = :token WHERE email = :email");
 				$statement->bindValue(':token', $token, PDO::PARAM_STR);
@@ -80,8 +74,7 @@ class Authentication extends Model
 				$user = $statement->fetch(PDO::FETCH_ASSOC);
 
 				// Verificar se a consulta SQL retorna apenas um resultado
-				if ($user !== false && $statement->rowCount() == 1) 
-				{
+				if ($user !== false && $statement->rowCount() == 1) {
 					// Criar sessões com dados encontrados
 					$_SESSION['user_id'] = $user['user_id'];
 					$_SESSION['username'] = $user['name'];
@@ -93,71 +86,95 @@ class Authentication extends Model
 					$_SESSION['token'] = $user['token'];
 
 					return true;
-				} 
-				else 
-				{
+				} else {
 					return false;
 				}
 			}
 		}
 	}
 
+	// Verifica se o token CSRF do usuário é válido
 	private function isTokenValid()
 	{
-		// Verifica se o token CSRF na sessão é válido comparando-o com o token do banco de dados.
+		// Prepara uma consulta SQL para buscar o token do usuário no banco de dados
 		$statement = $this->db->prepare("SELECT token FROM users WHERE email = :email");
+		
+		// Associa o valor do email da sessão à variável de consulta
 		$statement->bindValue(":email", $_SESSION['email']);
+		
+		// Executa a consulta
 		$statement->execute();
+		
+		// Obtém o resultado da consulta
 		$user = $statement->fetch(PDO::FETCH_ASSOC);
+
+		// Retorna verdadeiro se o usuário foi encontrado, se há exatamente um resultado,
+		// e se o token CSRF da sessão corresponde ao token armazenado no banco de dados
 		return ($user !== false && $statement->rowCount() == 1 && hash_equals($_SESSION['csrf_token'], $user['token']));
 	}
 
+	// Verifica se o usuário está logado, ou seja, se há uma sessão ativa
 	private function isLoggedIn()
 	{
-		// Verifica se o usuário está logado.
+		// Retorna verdadeiro se o índice 'user' existir na sessão e não estiver vazio
 		return isset($_SESSION['user']) && !empty($_SESSION['user']);
 	}
 
+	// Verifica se o usuário está verificado (por exemplo, se confirmou o email)
 	private function isVerified()
 	{
-		// Verifica se o usuário foi verificado.
+		// Retorna verdadeiro se o índice 'verified' existir na sessão e for igual a 1
 		return isset($_SESSION['verified']) && $_SESSION['verified'] == 1;
 	}
 
+	// Verifica se o usuário está logado e também verificado
 	private function isLoggedInAndVerified()
 	{
-		// Verifica se o usuário está logado e verificado.
+		// Retorna verdadeiro se o usuário estiver logado e verificado
 		return $this->isLoggedIn() && $this->isVerified();
 	}
 
+	// Requer que o usuário esteja logado para acessar determinadas páginas
 	public function requireLoggedIn()
 	{
-		// Verifica se o token é válido, se o usuário está logado.
+		// Se o token CSRF for inválido ou o usuário não estiver logado, redireciona para a página de login
 		if (!$this->isTokenValid() || !$this->isLoggedIn()) 
 		{
+			// Define uma mensagem de erro na sessão
 			$_SESSION['error_message'] = "Precisa estar logado!";
+			
+			// Redireciona o usuário para a página de login
 			header("Location: " . URL_PATH . "signin");
 			exit;
 		}
 	}
 
+	// Requer que o usuário esteja logado e verificado para acessar determinadas páginas
 	public function requireLoggedInAndVerified()
 	{
-		// Verifica se o token é válido, se o usuário está logado e verificado.
+		// Se o token CSRF for inválido, o usuário não estiver logado ou não estiver verificado,
+		// redireciona para a página de verificação
 		if (!$this->isTokenValid() || !$this->isLoggedInAndVerified()) 
 		{
+			// Define uma mensagem de erro na sessão
 			$_SESSION['error_message'] = "Precisa estar verificado para continuar!";
+			
+			// Redireciona o usuário para a página de verificação
 			header("Location: " . URL_PATH . "verify");
 			exit;
 		}
 	}
 
+	// Requer que o usuário esteja deslogado para acessar determinadas páginas (por exemplo, páginas públicas)
 	public function requireLogout()
 	{
-		// Verifica se o usuário está logado, se sim, redireciona para a página inicial.
+		// Se o usuário estiver logado, redireciona para o painel de controle
 		if ($this->isLoggedIn()) 
 		{
+			// Define uma mensagem de erro na sessão
 			$_SESSION['error_message'] = 'Não permitido!';
+			
+			// Redireciona o usuário para o dashboard
 			header("Location: " . URL_PATH . "./dashboard");
 			exit;
 		}
