@@ -180,12 +180,6 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_background_update')
 	    	header("Location: ".URL_PATH."link/edit/".$link_id);
 	    	exit;	    			
 		}
-
-
-
-
-
-
     }
 }
 

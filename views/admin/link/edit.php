@@ -118,7 +118,7 @@
                   <?php require_once __DIR__ . '/settings/font.php'; ?>
                   <?php require_once __DIR__ . '/settings/background.php'; ?>
                   <?php //require_once __DIR__ . '/settings/utm.php'; ?>
-                  <?php //require_once __DIR__ . '/settings/code.php'; ?>
+                  <?php require_once __DIR__ . '/settings/code.php'; ?>
                   <?php //require_once __DIR__ . '/settings/protection.php'; ?>
 
                 </div>

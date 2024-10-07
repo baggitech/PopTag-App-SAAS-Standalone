@@ -55,14 +55,15 @@ class User extends Model
 		$statement = $this->db->prepare("SELECT user_id FROM users WHERE email = :email");
 		$statement->bindValue(":email", $email);
 		$statement->execute();
-		if ($statement->rowCount() == 0) {
+		if ($statement->rowCount() == 0) 
+		{
 			$statement = $this->db->prepare("INSERT INTO users SET
 				name = :name,
 				email = :email,
 				password = :password,
 				level = :level,
 				code_verify = :code_verify
-				");
+			");
 			$statement->bindValue(":name", $name);
 			$statement->bindValue(":email", $email);
 			$statement->bindValue(":password", hash('sha256', $password));
@@ -75,7 +76,9 @@ class User extends Model
 			$_SESSION['code_verify'] = $code_verify;
 
 			return true;
-		} else {
+		} 
+		else 
+		{
 			return false;
 		}
 	}

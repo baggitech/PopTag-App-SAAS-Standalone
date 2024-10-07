@@ -9,10 +9,12 @@
 
 class DatabaseConnection
 {
+    // Declaração de uma propriedade privada que armazenará a instância da conexão PDO
     private PDO $db;
 
     public function __construct()
     {
+        // Chama o método privado connect() para estabelecer a conexão com o banco de dados
         $this->connect();
     }
 
@@ -20,31 +22,32 @@ class DatabaseConnection
     {
         try 
         {
-            // Configuração das opções para a conexão PDO
+            // Configuração das opções para a conexão PDO, um array de configurações importantes
             $options = [
-                // Impede a emulação de consultas preparadas
+                // Define que consultas preparadas não serão emuladas, garantindo maior segurança e compatibilidade
                 PDO::ATTR_EMULATE_PREPARES => false, 
-                // Lança exceções em caso de erros
+                // Configura o PDO para lançar exceções em caso de erros, facilitando o tratamento de erros
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
-                // Define o modo padrão de retorno como um array associativo
+                // Define o modo de retorno padrão como um array associativo
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, 
-                // Define o conjunto de caracteres e a colação de caracteres a serem usados
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci' 
+                // Instrução SQL inicial para configurar o conjunto de caracteres e colação ao conectar ao MySQL
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci'
             ];
 
-            // Configuração da string de conexão com o banco de dados
-            $dsn = sprintf('%s:host=%s;dbname=%s', DB_DRIVER, DB_HOST, DB_NAME); 
+            // Monta a string de conexão (Data Source Name - DSN) usando constantes definidas para o driver, host e nome do banco de dados
+            $dsn = sprintf('%s:host=%s;dbname=%s', DB_DRIVER, DB_HOST, DB_NAME);
 
-            // Criação de uma instância da classe PDO com a string de conexão e as opções
+            // Cria uma nova instância de PDO com a string de conexão, nome de usuário, senha e opções de conexão
             $this->db = new PDO($dsn, DB_USER, DB_PASS, $options);
         } 
         catch(PDOException $e) 
         {
-            // Tratamento de exceção em caso de erro na conexão
+            // Captura exceções em caso de falha na conexão e encerra o script exibindo a mensagem de erro
             die("Connection error: " . $e->getMessage());
         }        
     }
 
+    // Método público que retorna a conexão PDO para que outras classes possam utilizá-la
     public function getConnection(): PDO
     {
         return $this->db;

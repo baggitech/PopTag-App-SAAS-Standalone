@@ -9,6 +9,7 @@
 
 class Model
 {
+     // Declaração da variável protegida que armazenará a conexão com o banco de dados
     protected PDO $db;
 
     public function __construct()
