@@ -51,7 +51,8 @@ class Link extends Model
 			LEFT JOIN link_domain ON links.link_id = link_domain.link_id
 			LEFT JOIN link_seo ON links.link_id = link_seo.link_id
 			LEFT JOIN link_fonts ON links.link_id = link_fonts.link_id
-			LEFT JOIN link_background ON links.link_id = link_background.link_id    
+			LEFT JOIN link_background ON links.link_id = link_background.link_id
+			LEFT JOIN link_snippets ON links.link_id = link_snippets.link_id    
 			WHERE links.link_id = :link_id
 		");
 		$statement->bindValue(":link_id", $link_id);
@@ -188,6 +189,17 @@ class Link extends Model
 			$statement->bindValue(":background_updated_at", date("Y-m-d H:i:s"));
 			$statement->execute();
 
+			// INSERE O ID DO LINK NA TABELA DE FONTS DO LINK
+			$statement = $this->db->prepare("INSERT INTO link_snippets SET 
+				link_id = :link_id,
+				snippet_created_at = :snippet_created_at,
+				snippet_updated_at = :snippet_updated_at
+			");
+			$statement->bindValue(":link_id", $link_id);
+			$statement->bindValue(":snippet_created_at", date("Y-m-d H:i:s"));
+			$statement->bindValue(":snippet_updated_at", date("Y-m-d H:i:s"));
+			$statement->execute();
+
 			// INSERE O ID DO LINK NA TABELA DE TRAQUEAMENTO DO LINK
 			// $statement = $this->db->prepare("INSERT INTO link_track SET 
 			// 	link_id = :link_id,
@@ -283,6 +295,10 @@ class Link extends Model
 			$statement->execute();
 
 			$statement = $this->db->prepare("DELETE FROM link_background WHERE link_id = :link_id");
+			$statement->bindValue(":link_id", $link_id);
+			$statement->execute();
+
+			$statement = $this->db->prepare("DELETE FROM link_snippets WHERE link_id = :link_id");
 			$statement->bindValue(":link_id", $link_id);
 			$statement->execute();
 

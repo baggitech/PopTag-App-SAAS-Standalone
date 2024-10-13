@@ -24,7 +24,7 @@ require_once(__DIR__ . '/includes/data_server.php');
     <meta name="mssmarttagspreventparsing" content="true">
     <meta name="organization name" content="poptag.app">
     <meta name="author" content="poptag">    
-    <meta name="msapplication-TileImage" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>">
+    <meta name="msapplication-TileImage" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image'] ?? ''; ?>">
     <meta name="msapplication-TileColor" content="<?= $result['background_color_one'] ?? ''; ?>">
     <meta name="theme-color" content="<?= $result['background_color_two'] ?? ''; ?>">
 
@@ -36,14 +36,14 @@ require_once(__DIR__ . '/includes/data_server.php');
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="<?= $result['seo_title'] ?? ''; ?>">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>">
+    <meta property="og:image" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image'] ?? ''; ?>">
     <meta property="og:url" content="<?=URL_PATH;?><?= $result['link_name'] ?? ''; ?>">    
     <meta property="og:description" content="<?= $result['seo_meta_description'] ?? ''; ?>">    
 
     <!-- Open Graph / Twitter -->
     <meta property="twitter:title" content="<?= $result['seo_title'] ?? ''; ?>">
     <meta property="twitter:type" content="website">
-    <meta property="twitter:image:src" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>">
+    <meta property="twitter:image:src" content="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image'] ?? ''; ?>">
     <meta property="twitter:url" content="<?=URL_PATH;?><?= $result['link_name'] ?? ''; ?>">    
     <meta property="twitter:description" content="<?= $result['seo_meta_description'] ?? ''; ?>">
     <!-- Verificar para que serve abaixo: -->
@@ -55,7 +55,7 @@ require_once(__DIR__ . '/includes/data_server.php');
     <link rel="canonical" href="<?= URL_PATH; ?><?= $result['link_name'] ?? ''; ?>">
     <!-- <link rel="manifest" href="<?= URL_PATH; ?>manifest.json"> -->
 
-    <link rel="icon" type="image/png" href="<?=URL_PATH;?>uploads/favicon/<?= $result['avatar_image' ?? '']; ?>">
+    <link rel="icon" type="image/png" href="<?=URL_PATH;?>uploads/favicon/<?= $result['avatar_image'] ?? ''; ?>">
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48x48.png">
@@ -68,11 +68,21 @@ require_once(__DIR__ . '/includes/data_server.php');
 
     <?php require_once(__DIR__ . '/includes/link-custom.php'); ?>
 
+    <?php 
+    $snippet_head = $result['snippet_head'] ?? '';
+    $snippet_head = html_entity_decode($snippet_head, ENT_QUOTES, 'UTF-8'); 
+    echo $snippet_head;
+    ?>
 
 </head>
 
 <body class="link-body">
 
+<?php 
+$snippet_body = $result['snippet_body'] ?? '';
+$snippet_body = html_entity_decode($snippet_body, ENT_QUOTES, 'UTF-8'); 
+echo $snippet_body;
+?>
 
     <div class="container animate__animated animate__fadeIn">
 
@@ -104,8 +114,8 @@ require_once(__DIR__ . '/includes/data_server.php');
                     <?php if($result['avatar_is_enabled'] == 1): ?>
                         <div id="biolink_block_id_3898" data-biolink-block-id="3898" class="col-12 my-2">
                             <div class="d-flex flex-column align-items-center">
-                                <a href="<?= $result['avatar_location_url'] ?? '#'; ?>" data-track-biolink-block-id="3865" target="<?= $result['avatar_target_link' ?? '']; ?>">
-                                    <img src="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image' ?? '']; ?>" class="link-image link-avatar-<?= $result['avatar_border_radius' ?? '']; ?>" style="width: <?= $result['avatar_width' ?? '']; ?>; height: <?= $result['avatar_height' ?? '']; ?>; border-width: <?= $result['avatar_border_width' ?? '']; ?>px; border-color: <?= $result['avatar_border_color' ?? '']; ?>; border-style: <?= $result['avatar_border_style' ?? '']; ?>; object-fit: <?= $result['avatar_object_fit' ?? '']; ?>;" alt="<?= $result['avatar_image_alt'] ?? ''; ?>" loading="lazy" data-border-width="" data-border-avatar-radius="" data-border-style="" data-border-color="" data-avatar="" />
+                                <a href="<?= $result['avatar_location_url'] ?? '#'; ?>" data-track-biolink-block-id="3865" target="<?= $result['avatar_target_link'] ?? ''; ?>">
+                                    <img src="<?=URL_PATH;?>uploads/avatar/<?= $result['avatar_image'] ?? ''; ?>" class="link-image link-avatar-<?= $result['avatar_border_radius'] ?? ''; ?>" style="width: <?= $result['avatar_width'] ?? ''; ?>; height: <?= $result['avatar_height'] ?? ''; ?>; border-width: <?= $result['avatar_border_width'] ?? ''; ?>px; border-color: <?= $result['avatar_border_color'] ?? ''; ?>; border-style: <?= $result['avatar_border_style'] ?? ''; ?>; object-fit: <?= $result['avatar_object_fit'] ?? ''; ?>;" alt="<?= $result['avatar_image_alt'] ?? ''; ?>" loading="lazy" data-border-width="" data-border-avatar-radius="" data-border-style="" data-border-color="" data-avatar="" />
                                 </a>
                             </div>
                         </div>
@@ -137,5 +147,11 @@ require_once(__DIR__ . '/includes/data_server.php');
 <script src="assets/js/fontawesome.min.js?v=1.0.0"></script>
 <script src="assets/js/fontawesome-solid.min.js?v=1.0.0"></script>
 <script src="assets/js/fontawesome-brands.min.js?v=1.0.0"></script>
+
+<?php 
+$snippet_footer = $result['snippet_footer'] ?? '';
+$snippet_footer = html_entity_decode($snippet_footer, ENT_QUOTES, 'UTF-8'); 
+echo $snippet_footer;
+?>
 
 </html>

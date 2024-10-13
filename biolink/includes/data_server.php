@@ -78,7 +78,8 @@ if (isset($_GET['url']) && !empty($_GET['url']))
             LEFT JOIN link_domain ON links.link_id = link_domain.link_id
             LEFT JOIN link_seo ON links.link_id = link_seo.link_id
             LEFT JOIN link_fonts ON links.link_id = link_fonts.link_id
-            LEFT JOIN link_background ON links.link_id = link_background.link_id    
+            LEFT JOIN link_background ON links.link_id = link_background.link_id
+            LEFT JOIN link_snippets ON links.link_id = link_snippets.link_id   
             LEFT JOIN blocks ON links.link_id = blocks.link_id
             LEFT JOIN block_avatar ON links.link_id = block_avatar.link_id                      
             WHERE link_name = :link_name ORDER BY block_orderliness

@@ -55,6 +55,9 @@ class LinkController extends Controller
         $class_link_background = new LinkBackground();
         $data['link_background'] = $class_link_background->getLinkBackground($link_id);
 
+        $class_link_snippet = new LinkSnippets();
+        $data['link_snippet'] = $class_link_snippet->getLinkSnippets($link_id);
+
         $class_blocks = new Blocks();
         $data['blocks'] = $class_blocks->getBlocks($link_id);
 
@@ -65,6 +68,7 @@ class LinkController extends Controller
         require_once __DIR__.'/forms/link-name-update.php';
         require_once __DIR__.'/forms/link-seo-update.php';
         require_once __DIR__.'/forms/link-font-update.php';
+        require_once __DIR__.'/forms/link-snippet-update.php';
         require_once __DIR__.'/forms/link-background-update.php';
         require_once __DIR__.'/forms/link-enabledDisabledTwo.php';
         
