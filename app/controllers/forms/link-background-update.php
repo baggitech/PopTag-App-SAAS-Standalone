@@ -141,7 +141,7 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_background_update')
 
 			   	if(!empty($path))
 			   	{
-				    if($mime !='image/jpeg' && $mime !='image/png' && $mime !='image/gif')
+				    if($mime !='image/jpeg' && $mime !='image/png' && $mime !='image/gif' && $mime !='image/svg+xml')
 				    {
 				    	$error_message = "Tipo de arquivo não aceito!";
 				    	$_SESSION['error_message'] = $error_message;
@@ -154,6 +154,7 @@ if (isset($_POST['form_']) && $_POST['form_'] == 'link_background_update')
 				        if($mime == 'image/jpeg') {$ext = 'jpeg';}
 				        elseif($mime == 'image/png') {$ext = 'png';}
 				        elseif($mime == 'image/gif') {$ext = 'gif';}
+						elseif($mime == 'image/svg+xml') {$ext = 'svg';}
 				        $background_image = $link_name.'.'.$ext;
 				        $local = (__DIR__ . '/../../../biolink/uploads/background/');
 				        move_uploaded_file($path_tmp, $local . $background_image);

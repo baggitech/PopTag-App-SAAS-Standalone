@@ -138,7 +138,7 @@
                                     <label for="background_image" class="form-label text-muted text-3 mb-2">
                                         <i class="fa fa-fw fa-image ms-1"></i> Imagem
                                     </label>
-                                    <input type="file" name="background_image" id="background_image" class="form-control" value="" accept=".gif, .png, .jpg, .jpeg">
+                                    <input type="file" name="background_image" id="background_image" class="form-control" value="" accept=".gif, .png, .jpg, .jpeg, .svg">
                                     <small class="form-text text-muted">
                                         Defina uma imagem de fundo para sua página de link. png, gif ou ico aceitos.
                                     </small><br>

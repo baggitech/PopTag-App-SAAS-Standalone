@@ -20,7 +20,7 @@
                 <!-- START CONTENT -->
                 <div class="col-lg-12">
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST" enctype="multipart/form-data" id="link_snippet_update">
 
                         <div class="hidden mb-3">
                             <input type="text" name="form_" class="form-control mb-1 readonly-field" value="link_snippet_update" readonly>
@@ -70,7 +70,8 @@
                             </small>
                         </div>
 
-                        <div class="d-flex justify-content-end mt-4">
+                        <div class="d-flex gap-2 justify-content-end mt-4">
+                            <button type="button" class="btn btn-primary btn-md btn-primary-modified" onclick="limparCampos2()">Limpar Formulário</button>
                             <button type="submit" class="btn btn-primary btn-md btn-primary-modified">
                                 <i class="fa fa-save me-2"></i> Salvar
                             </button>
@@ -85,3 +86,48 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function limparCampos2() {
+        // Obter o formulário
+        var formulario = document.getElementById('link_snippet_update');
+
+        // Iterar por todos os elementos do formulário
+        for (var i = 0; i < formulario.elements.length; i++) {
+            var elemento = formulario.elements[i];
+
+            // Verificar o tipo de elemento
+            switch (elemento.type) {
+                case 'text':
+                case 'textarea':
+                case 'password':
+                case 'email':
+                case 'number':
+                case 'tel':
+                case 'date':
+                case 'select-one':
+                    elemento.value = '';
+                    break;
+                case 'range': // Incluindo o tipo 'range'
+                    elemento.value = elemento.min || 0;
+                    break;
+                case 'color': // Incluindo o tipo 'color'
+                    elemento.value = '#FFFFFF'; // Definindo a cor para preto como padrão
+                    break;
+                case 'radio':
+                case 'checkbox':
+                    elemento.checked = false;
+                    break;
+                case 'select-multiple':
+                    for (var j = 0; j < elemento.options.length; j++) {
+                        elemento.options[j].selected = false;
+                    }
+                    break;
+                case 'file':
+                    elemento.value = null;
+                    break;
+            }
+        }
+    }
+</script>
