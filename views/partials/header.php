@@ -52,7 +52,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
 
   <!-- Start Vendor Generic Style -->
-  <link rel="stylesheet" type="text/css" href="<?= VENDOR_PATH; ?>bootstrap/5.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="<?= VENDOR_PATH; ?>bootstrap/5.3.3/css/bootstrap.min.css?v=5.3.3" />
   <link rel="stylesheet" type="text/css" href="<?= VENDOR_PATH; ?>DataTables/datatables.css" />
   <link rel="stylesheet" type="text/css" href="<?= VENDOR_PATH; ?>owl.carousel/assets/owl.carousel.min.css" />
   <link rel="stylesheet" type="text/css" href="<?= VENDOR_PATH; ?>bootstrap-select/css/bootstrap-select.min.css" />
@@ -82,10 +82,10 @@
 
 <body>
 
-  <!-- Start Preloader
+  <!-- Start Preloader -->
   <div id="preloader">
     <div data-loader="dual-ring"></div>
-  </div> -->
+  </div>
   <!-- End Preloader -->
 
   <div id="main-wrapper">

@@ -2,7 +2,7 @@
 if (isset($_POST['form_']) && $_POST['form_'] == 'block_avatar_update') 
 {
     // Verifica se o token CSRF é válido
-    if (isset($_POST['token']) && !hash_equals($_SESSION['csrf_token'], $_POST['token'])) 
+    if (!isset($_POST['token']) || !hash_equals($_SESSION['csrf_token'], $_POST['token'])) 
     {
         // Define a mensagem de erro
         $_SESSION['error_message'] = "Token inválido. Tente novamente.";

@@ -31,17 +31,15 @@ class Authentication extends Model
 
 	public function authLogin($email, $password, $token)
 	{
-		// Utilizar hash mais forte para senha do usuário
-		$hashed_password = hash('sha256', $password);
-
 		// Verificar se o email do usuário existe
-		$sql = "SELECT COUNT(*) FROM users WHERE email = :email";
+		$sql = "SELECT password FROM users WHERE email = :email";
 		$statement = $this->db->prepare($sql);
 		$statement->bindValue(":email", $email, PDO::PARAM_STR);
 		$statement->execute();
-		$user_exists = $statement->fetchColumn();
+		$user = $statement->fetch(PDO::FETCH_ASSOC);
+	
 		// Se o email não existir, retorne mensagem de erro
-		if ($user_exists == 0) 
+		if (!$user) 
 		{
 			$_SESSION['error_message'] = "O email fornecido não existe em nosso sistema.";
 			header("Location: " . URL_PATH . "signin");
@@ -49,21 +47,10 @@ class Authentication extends Model
 		} 
 		else 
 		{
-			// Verificar se o email e a senha correspondem a um registro na tabela de usuários
-			$sql = "SELECT COUNT(*) FROM users WHERE email = :email AND password = :password";
-			$statement = $this->db->prepare($sql);
-			$statement->bindValue(":email", $email, PDO::PARAM_STR);
-			$statement->bindValue(":password", $hashed_password, PDO::PARAM_STR);
-			$statement->execute();
-			$user_password_match = $statement->fetchColumn();
-			// Se a senha não corresponder, retorne mensagem de erro
-			if ($user_password_match == 0) 
-			{
-				$_SESSION['error_message'] = "A senha fornecida não corresponde ao email fornecido.";
-				header("Location: " . URL_PATH . "signin");
-				exit;
-			} 
-			else 
+			// Verificar se a senha fornecida corresponde ao hash armazenado
+			$password_verified = password_verify($password, $user['password']);
+
+			if ($password_verified) 
 			{
 				// Usar prepared statements do PDO para evitar SQL injection
 				$sql = "UPDATE users SET token = :token WHERE email = :email";
@@ -71,16 +58,13 @@ class Authentication extends Model
 				$statement->bindValue(':token', $token, PDO::PARAM_STR);
 				$statement->bindValue(':email', $email, PDO::PARAM_STR);
 				$statement->execute();
-
-				// Usar prepared statements do PDO para evitar SQL injection e recuperar apenas as colunas necessárias
-				$sql = "SELECT user_id, name, verified, level, email, code_verify, token FROM users WHERE email = :email AND password = :password";
+	
+				// Recuperar somente as colunas necessárias
+				$sql = "SELECT user_id, name, verified, level, email, code_verify, token FROM users WHERE email = :email";
 				$statement = $this->db->prepare($sql);
 				$statement->bindValue(":email", $email, PDO::PARAM_STR);
-				$statement->bindValue(":password", $hashed_password, PDO::PARAM_STR);
 				$statement->execute();
 				$user = $statement->fetch(PDO::FETCH_ASSOC);
-
-				// Verificar se a consulta SQL retorna apenas um resultado
 				if ($user !== false && $statement->rowCount() == 1) 
 				{
 					// Criar sessões com dados encontrados
@@ -92,16 +76,23 @@ class Authentication extends Model
 					$_SESSION['email'] = $user['email'];
 					$_SESSION['code_verify'] = $user['code_verify'];
 					$_SESSION['token'] = $user['token'];
-
+	
 					return true;
 				} 
 				else 
 				{
 					return false;
 				}
+			} 
+			else 
+			{
+				$_SESSION['error_message'] = "A senha digitada não corresponde ao email fornecido.";
+				header("Location: " . URL_PATH . "signin");
+				exit;
 			}
 		}
 	}
+	
 
 	// Verifica se o token CSRF do usuário é válido
 	private function isTokenValid()

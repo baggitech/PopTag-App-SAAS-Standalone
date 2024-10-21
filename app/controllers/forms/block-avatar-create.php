@@ -2,8 +2,8 @@
 if (isset($_POST['form_']) && $_POST['form_'] == 'block_avatar_create') 
 {
     // Verifica se o token CSRF é válido
-    if (isset($_POST['token']) && !hash_equals($_SESSION['csrf_token'], $_POST['token'])) {
-
+    if (!isset($_POST['token']) || !hash_equals($_SESSION['csrf_token'], $_POST['token'])) 
+    {
         // Define a mensagem de erro de token inválido
         $_SESSION['error_message'] = "Token inválido. Tente novamente.";
         header('Location: ' . URL_PATH . 'link/edit/' . $link_id);

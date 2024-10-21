@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/10/2024 às 06:45
+-- Tempo de geração: 21/10/2024 às 08:01
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -39,8 +39,7 @@ CREATE TABLE `blocks` (
 --
 
 INSERT INTO `blocks` (`block_id`, `link_id`, `block_type`, `block_orderliness`) VALUES
-(1, 1, 'avatar', 1),
-(2, 4, 'avatar', 1);
+(3, 11, 'avatar', 2);
 
 -- --------------------------------------------------------
 
@@ -77,8 +76,7 @@ CREATE TABLE `block_avatar` (
 --
 
 INSERT INTO `block_avatar` (`avatar_id`, `link_id`, `avatar_image`, `avatar_image_alt`, `avatar_location_url`, `avatar_target_link`, `avatar_height`, `avatar_width`, `avatar_border_radius`, `avatar_border_shadow_offset_x`, `avatar_border_shadow_offset_y`, `avatar_border_shadow_blur`, `avatar_border_shadow_spread`, `avatar_border_shadow_color`, `avatar_border_width`, `avatar_border_style`, `avatar_border_color`, `avatar_object_fit`, `avatar_is_enabled`, `avatar_created_at`, `avatar_updated_at`) VALUES
-(1, 1, 'gxzqu2k3.jpeg', NULL, NULL, NULL, '125px', '125px', 'round', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2024-09-29 19:48:45', '2024-10-06 15:07:18'),
-(2, 4, '02jdh7p3.jpeg', NULL, NULL, NULL, '150px', '150px', 'straight', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2024-10-04 12:01:46', '2024-10-04 12:01:46');
+(4, 11, 'xdy43kv2.png', '', '', NULL, '125px', '125px', 'round', NULL, NULL, NULL, NULL, NULL, '0', 'Selecionar', '#000000', 'Selecionar', 1, '2024-10-21 00:13:02', '2024-10-21 00:14:29');
 
 -- --------------------------------------------------------
 
@@ -194,6 +192,8 @@ CREATE TABLE `links` (
   `link_type` varchar(32) NOT NULL,
   `link_settings` text DEFAULT NULL,
   `link_is_enabled` tinyint(4) NOT NULL DEFAULT 1,
+  `link_sensitive_content` tinyint(4) NOT NULL DEFAULT 0,
+  `link_password` varchar(255) NOT NULL,
   `link_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `link_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -202,12 +202,8 @@ CREATE TABLE `links` (
 -- Despejando dados para a tabela `links`
 --
 
-INSERT INTO `links` (`link_id`, `user_id`, `link_name`, `link_type`, `link_settings`, `link_is_enabled`, `link_created_at`, `link_updated_at`) VALUES
-(1, 1, 'gxzqu2k3', 'biolink', NULL, 1, '2024-09-29 18:28:58', '2024-10-06 15:09:04'),
-(2, 1, '4zfd0a9o', 'biolink', NULL, 1, '2024-10-03 12:21:35', '2024-10-03 12:21:35'),
-(3, 1, 'oje3l075', 'biolink', NULL, 1, '2024-10-03 12:21:38', '2024-10-03 12:21:38'),
-(4, 1, '02jdh7p3', 'biolink', NULL, 1, '2024-10-03 12:21:40', '2024-10-03 12:21:40'),
-(5, 34, 'bumlercwss', 'biolink', NULL, 1, '2024-10-04 13:46:23', '2024-10-04 13:46:33');
+INSERT INTO `links` (`link_id`, `user_id`, `link_name`, `link_type`, `link_settings`, `link_is_enabled`, `link_sensitive_content`, `link_password`, `link_created_at`, `link_updated_at`) VALUES
+(11, 42, 'xdy43kv2', 'biolink', NULL, 1, 0, '', '2024-10-19 23:51:02', '2024-10-21 05:12:56');
 
 -- --------------------------------------------------------
 
@@ -233,21 +229,7 @@ CREATE TABLE `link_background` (
 --
 
 INSERT INTO `link_background` (`background_id`, `link_id`, `background_type`, `background_color_code`, `background_color_one`, `background_color_two`, `background_to_direction`, `background_image`, `background_created_at`, `background_updated_at`) VALUES
-(1, 1, 'gradient', 'eight', '#44A08D', '#093637', 'to bottom', NULL, '2024-09-29 18:28:58', '2024-09-29 19:48:54'),
-(2, 2, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:35', '2024-10-03 12:21:35'),
-(3, 3, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:38', '2024-10-03 12:21:38'),
-(4, 4, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:40', '2024-10-03 12:21:40'),
-(5, 5, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-04 13:46:23', '2024-10-04 13:46:23');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `link_code_snippet`
---
-
-CREATE TABLE `link_code_snippet` (
-  `snippet_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(11, 11, 'gradient', 'six', '#fc5c7d', '#6a82fb', 'to bottom', NULL, '2024-10-19 23:51:02', '2024-10-21 02:15:31');
 
 -- --------------------------------------------------------
 
@@ -272,11 +254,7 @@ CREATE TABLE `link_domain` (
 --
 
 INSERT INTO `link_domain` (`domain_id`, `link_id`, `domain_type`, `domain_name`, `domain_host`, `domain_custom_index_url`, `domain_custom_not_found_url`, `domain_created_at`, `domain_updated_at`) VALUES
-(1, 1, NULL, 'poptag.app', NULL, NULL, NULL, '2024-09-29 18:28:58', '2024-09-29 18:28:58'),
-(2, 2, NULL, 'poptag.app', NULL, NULL, NULL, '2024-10-03 12:21:35', '2024-10-03 12:21:35'),
-(3, 3, NULL, 'poptag.app', NULL, NULL, NULL, '2024-10-03 12:21:38', '2024-10-03 12:21:38'),
-(4, 4, NULL, 'poptag.app', NULL, NULL, NULL, '2024-10-03 12:21:40', '2024-10-03 12:21:40'),
-(5, 5, NULL, 'poptag.app', NULL, NULL, NULL, '2024-10-04 13:46:23', '2024-10-04 13:46:33');
+(11, 11, NULL, 'poptag.app', NULL, NULL, NULL, '2024-10-19 23:51:02', '2024-10-19 23:51:02');
 
 -- --------------------------------------------------------
 
@@ -301,11 +279,7 @@ CREATE TABLE `link_fonts` (
 --
 
 INSERT INTO `link_fonts` (`font_id`, `link_id`, `font_one`, `font_two`, `font_three`, `font_size`, `font_color`, `font_created_at`, `font_updated_at`) VALUES
-(1, 1, 'Arial', 'Helvetica', 'Helvetica', 16, '#ffffff', '2024-09-29 18:28:58', '2024-10-06 15:10:51'),
-(2, 2, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:35', '2024-10-03 12:21:35'),
-(3, 3, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:38', '2024-10-03 12:21:38'),
-(4, 4, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:40', '2024-10-03 12:21:40'),
-(5, 5, NULL, NULL, NULL, NULL, NULL, '2024-10-04 13:46:23', '2024-10-04 13:46:23');
+(11, 11, '', '', '', 16, '#000000', '2024-10-19 23:51:02', '2024-10-20 21:09:53');
 
 -- --------------------------------------------------------
 
@@ -330,11 +304,30 @@ CREATE TABLE `link_seo` (
 --
 
 INSERT INTO `link_seo` (`seo_id`, `link_id`, `seo_robots`, `seo_title`, `seo_meta_description`, `seo_meta_keywords`, `seo_favicon`, `seo_created_at`, `seo_updated_at`) VALUES
-(1, 1, NULL, NULL, NULL, NULL, NULL, '2024-09-29 18:28:58', '2024-09-29 18:28:58'),
-(2, 2, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:35', '2024-10-03 12:21:35'),
-(3, 3, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:38', '2024-10-03 12:21:38'),
-(4, 4, NULL, NULL, NULL, NULL, NULL, '2024-10-03 12:21:40', '2024-10-03 12:21:40'),
-(5, 5, NULL, NULL, NULL, NULL, NULL, '2024-10-04 13:46:23', '2024-10-04 13:46:23');
+(11, 11, NULL, 'Título da página', 'descrição da página', 'palavras chaves da página', 'xdy43kv2.png', '2024-10-19 23:51:02', '2024-10-20 00:55:50');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `link_snippets`
+--
+
+CREATE TABLE `link_snippets` (
+  `snippet_id` int(11) NOT NULL,
+  `link_id` int(11) NOT NULL,
+  `snippet_head` text DEFAULT NULL,
+  `snippet_body` text DEFAULT NULL,
+  `snippet_footer` text DEFAULT NULL,
+  `snippet_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `snippet_updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Despejando dados para a tabela `link_snippets`
+--
+
+INSERT INTO `link_snippets` (`snippet_id`, `link_id`, `snippet_head`, `snippet_body`, `snippet_footer`, `snippet_created_at`, `snippet_updated_at`) VALUES
+(11, 11, NULL, NULL, NULL, '2024-10-19 23:51:02', '2024-10-19 23:51:02');
 
 -- --------------------------------------------------------
 
@@ -496,14 +489,6 @@ CREATE TABLE `pixels` (
   `pixel_last_date_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `pixels`
---
-
-INSERT INTO `pixels` (`pixel_id`, `user_id`, `link_id`, `pixel_platform`, `pixel_name`, `pixel`, `pixel_note`, `pixel_social_media`, `pixel_is_enabled`, `pixel_date_time`, `pixel_last_date_time`) VALUES
-(1, 1, 1, 'facebook', 'sdsd', '', NULL, 'facebook.svg', 1, '2024-10-03 09:16:19', NULL),
-(2, 1, 1, 'google_analytics', 'sdsd2', '', NULL, 'google-analytics.svg', 1, '2024-10-03 09:18:52', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -521,13 +506,6 @@ CREATE TABLE `projects` (
   `project_datetime` datetime DEFAULT NULL,
   `project_last_datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `projects`
---
-
-INSERT INTO `projects` (`project_id`, `user_id`, `project_name`, `project_slug`, `project_color`, `project_description`, `project_is_enabled`, `project_datetime`, `project_last_datetime`) VALUES
-(1, 1, 'blue', '扬略', '#000000', '', 1, '2024-10-03 09:21:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -550,14 +528,6 @@ CREATE TABLE `qrcodes` (
   `qrcode_last_datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Despejando dados para a tabela `qrcodes`
---
-
-INSERT INTO `qrcodes` (`qrcode_id`, `user_id`, `link_id`, `qrcode_name`, `qrcode_type`, `qrcode_logo`, `qrcode_fields`, `qrcode_image`, `qrcode_settings`, `qrcode_is_enabled`, `qrcode_date_time`, `qrcode_last_datetime`) VALUES
-(1, 1, 1, 'artigo', 'email', NULL, 'SMTP:admin@gmail.com:fatura:.n.j', '13b516fa749abd746006d27054b5f4d1.png', NULL, 1, '2024-10-03 09:19:40', NULL),
-(2, 1, 1, 'artigo2', 'facebook', NULL, 'QR Code Vazio!', 'bae77a4e6c92418294b81ba6de8bcd59.png', NULL, 1, '2024-10-03 09:21:21', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -571,14 +541,6 @@ CREATE TABLE `recovery_token` (
   `start_token` datetime DEFAULT NULL,
   `expiration_token` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Despejando dados para a tabela `recovery_token`
---
-
-INSERT INTO `recovery_token` (`id`, `email`, `token`, `start_token`, `expiration_token`) VALUES
-(1, 'baggitech@gmail.com', '4e7ddf2a42466ec1d2073475c5a56354', '2024-10-01 14:15:03', '2024-10-02 14:15:03'),
-(2, 'admin@gmail.com', '91086d5e32bdadad50b3a53fb234fcdd', '2024-09-30 14:54:32', '2024-10-01 14:54:32');
 
 -- --------------------------------------------------------
 
@@ -645,7 +607,7 @@ INSERT INTO `settings` (`id`, `key`, `value`) VALUES
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `email` varchar(320) NOT NULL,
-  `password` varchar(128) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `name` varchar(64) NOT NULL,
   `billing` text DEFAULT NULL,
   `api_key` varchar(32) DEFAULT NULL,
@@ -688,9 +650,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `name`, `billing`, `api_key`, `token`, `twofa_secret`, `anti_phishing_code`, `one_time_login_code`, `pending_email`, `email_activation_code`, `lost_password_code`, `type`, `verified`, `plan_id`, `plan_expiration_date`, `plan_settings`, `plan_trial_done`, `plan_expiry_reminder`, `payment_subscription_id`, `payment_processor`, `payment_total_amount`, `payment_currency`, `referral_key`, `referred_by`, `referred_by_has_converted`, `language`, `timezone`, `ip`, `country`, `last_activity`, `last_user_agent`, `total_logins`, `user_deletion_reminder`, `source`, `level`, `code_verify`) VALUES
-(1, 'admin@gmail.com', '9b267f64fbfecc6fe57a4e51ebff29ecd3b84c10863a0847279cba076f776e3c', 'AltumCode', NULL, 'cc4c27ae1085ad965050c668c1f7bb7d', 'c5bf9e5d4b06050c06102cc8202a08c0470bbfeca8e128c5c9189f206efd7e7a', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 'custom', '2030-01-01 12:00:00', '{\"additional_global_domains\":true,\"custom_url\":true,\"deep_links\":true,\"no_ads\":true,\"removable_branding\":true,\"custom_branding\":true,\"custom_colored_links\":true,\"statistics\":true,\"qr_is_enabled\":true,\"custom_backgrounds\":true,\"verified\":true,\"temporary_url_is_enabled\":true,\"seo\":true,\"utm\":true,\"fonts\":true,\"password\":true,\"sensitive_content\":true,\"leap_link\":true,\"api_is_enabled\":true,\"affiliate_is_enabled\":true,\"dofollow_is_enabled\":true,\"biolink_blocks_limit\":-1,\"projects_limit\":-1,\"pixels_limit\":-1,\"biolinks_limit\":-1,\"links_limit\":-1,\"domains_limit\":-1,\"track_links_retention\":-1,\"enabled_biolink_blocks\":{\"link\":true,\"heading\":true,\"paragraph\":true,\"avatar\":true,\"image\":true,\"socials\":true,\"mail\":true,\"soundcloud\":true,\"spotify\":true,\"youtube\":true,\"twitch\":true,\"vimeo\":true,\"tiktok\":true,\"applemusic\":true,\"tidal\":true,\"anchor\":true,\"twitter_tweet\":true,\"instagram_media\":true,\"rss_feed\":true,\"custom_html\":true,\"vcard\":true,\"image_grid\":true,\"divider\":true,\"faq\":true,\"discord\":true,\"facebook\":true,\"reddit\":true,\"audio\":true,\"video\":true,\"file\":true,\"countdown\":true,\"cta\":true,\"external_item\":true,\"share\":true,\"youtube_feed\":true}}', 0, 0, NULL, NULL, NULL, NULL, '96f3359c8a43dda4b9ad9bda57f1197f', NULL, 0, 'english', 'UTC', '::1', NULL, '2022-12-05 03:19:27', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 2, 0, 'direct', 3, '604532'),
-(34, 'baggitech@gmail.com', '9b267f64fbfecc6fe57a4e51ebff29ecd3b84c10863a0847279cba076f776e3c', 'Lazaro', NULL, NULL, '5f88d8b2eac789380c385ed6e3733a8a0bceab11e5a3432d754da3d71193de06', NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, '', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'english', 'UTC', NULL, NULL, NULL, NULL, 0, 0, 'direct', 1, '713845'),
-(41, 'admin2@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Lazaro', NULL, NULL, '99913d574ad1a7bcc9318c6aca8cdab6e8dbb8f2ce1cc8ea602ebfecd3c9f165', NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, '', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'english', 'UTC', NULL, NULL, NULL, NULL, 0, 0, 'direct', 1, '487391');
+(1, 'admin@gmail.com', '$2y$10$slWZIvEvt9aYRSvkvsPCaOASX47cEHYsEcTGKrI6D7Gb0FlfBMcE2', 'admin', NULL, 'cc4c27ae1085ad965050c668c1f7bb7d', 'ed96edcc7d2fc0dc019f03cd017058b09af0a5b4f80a471b39fca4ebd220fe03', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 'custom', '2030-01-01 12:00:00', '{\"additional_global_domains\":true,\"custom_url\":true,\"deep_links\":true,\"no_ads\":true,\"removable_branding\":true,\"custom_branding\":true,\"custom_colored_links\":true,\"statistics\":true,\"qr_is_enabled\":true,\"custom_backgrounds\":true,\"verified\":true,\"temporary_url_is_enabled\":true,\"seo\":true,\"utm\":true,\"fonts\":true,\"password\":true,\"sensitive_content\":true,\"leap_link\":true,\"api_is_enabled\":true,\"affiliate_is_enabled\":true,\"dofollow_is_enabled\":true,\"biolink_blocks_limit\":-1,\"projects_limit\":-1,\"pixels_limit\":-1,\"biolinks_limit\":-1,\"links_limit\":-1,\"domains_limit\":-1,\"track_links_retention\":-1,\"enabled_biolink_blocks\":{\"link\":true,\"heading\":true,\"paragraph\":true,\"avatar\":true,\"image\":true,\"socials\":true,\"mail\":true,\"soundcloud\":true,\"spotify\":true,\"youtube\":true,\"twitch\":true,\"vimeo\":true,\"tiktok\":true,\"applemusic\":true,\"tidal\":true,\"anchor\":true,\"twitter_tweet\":true,\"instagram_media\":true,\"rss_feed\":true,\"custom_html\":true,\"vcard\":true,\"image_grid\":true,\"divider\":true,\"faq\":true,\"discord\":true,\"facebook\":true,\"reddit\":true,\"audio\":true,\"video\":true,\"file\":true,\"countdown\":true,\"cta\":true,\"external_item\":true,\"share\":true,\"youtube_feed\":true}}', 0, 0, NULL, NULL, NULL, NULL, '96f3359c8a43dda4b9ad9bda57f1197f', NULL, 0, 'english', 'UTC', '::1', NULL, '2022-12-05 03:19:27', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 2, 0, 'direct', 3, '604532'),
+(42, 'baggitech@gmail.com', '$2y$10$slWZIvEvt9aYRSvkvsPCaOASX47cEHYsEcTGKrI6D7Gb0FlfBMcE2', 'lazaro Baggi', NULL, NULL, '78b6d88018b90a02c8bf7258c622ee82d713590deb81bbdfa3be94425967c5ad', NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, '', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'english', 'UTC', NULL, NULL, NULL, NULL, 0, 0, 'direct', 1, '372865');
 
 --
 -- Índices para tabelas despejadas
@@ -727,12 +688,6 @@ ALTER TABLE `link_background`
   ADD PRIMARY KEY (`background_id`);
 
 --
--- Índices de tabela `link_code_snippet`
---
-ALTER TABLE `link_code_snippet`
-  ADD PRIMARY KEY (`snippet_id`);
-
---
 -- Índices de tabela `link_domain`
 --
 ALTER TABLE `link_domain`
@@ -749,6 +704,12 @@ ALTER TABLE `link_fonts`
 --
 ALTER TABLE `link_seo`
   ADD PRIMARY KEY (`seo_id`);
+
+--
+-- Índices de tabela `link_snippets`
+--
+ALTER TABLE `link_snippets`
+  ADD PRIMARY KEY (`snippet_id`);
 
 --
 -- Índices de tabela `link_themes`
@@ -812,13 +773,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `block_avatar`
 --
 ALTER TABLE `block_avatar`
-  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `languages`
@@ -830,37 +791,37 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT de tabela `links`
 --
 ALTER TABLE `links`
-  MODIFY `link_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `link_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `link_background`
 --
 ALTER TABLE `link_background`
-  MODIFY `background_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de tabela `link_code_snippet`
---
-ALTER TABLE `link_code_snippet`
-  MODIFY `snippet_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `background_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `link_domain`
 --
 ALTER TABLE `link_domain`
-  MODIFY `domain_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `domain_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `link_fonts`
 --
 ALTER TABLE `link_fonts`
-  MODIFY `font_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `font_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `link_seo`
 --
 ALTER TABLE `link_seo`
-  MODIFY `seo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `seo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de tabela `link_snippets`
+--
+ALTER TABLE `link_snippets`
+  MODIFY `snippet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `link_themes`
@@ -884,25 +845,25 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT de tabela `pixels`
 --
 ALTER TABLE `pixels`
-  MODIFY `pixel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pixel_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `qrcodes`
 --
 ALTER TABLE `qrcodes`
-  MODIFY `qrcode_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `qrcode_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `recovery_token`
 --
 ALTER TABLE `recovery_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `settings`
@@ -914,7 +875,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

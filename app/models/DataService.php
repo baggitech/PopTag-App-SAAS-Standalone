@@ -37,4 +37,22 @@ class DataService
 
         return $data;
     }
+
+    public function getDataServiceBackEndAndNotVerified($data, $user_id)
+    {
+        $class_settings = new Settings();
+        $data['setting'] = $class_settings->getSettings();
+
+        $class_language = new Languages();
+        $data['language'] = $class_language->getLanguage();
+
+        $class_auth = new Authentication();
+        $class_auth->requireLoggedIn();
+
+        $class_user = new User();
+        $data['user'] = $class_user->getUser($user_id);
+
+        return $data;
+    }
+
 }

@@ -17,10 +17,18 @@ class LinkController extends Controller
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
         // ---------------------------------------------------------------------- //
 
+        $link_id = $_SESSION['link_id'] ?? null;
+
         $class_link = new Link();
         $data['links'] = $class_link->getLinksAndDomainsByUserId($user_id);
         $data['totalEnabled'] = $class_link->getAllLinksIsEnabledByUserID($user_id);
         $data['totalDisabled'] = $class_link->getAllLinksIsDisabledByUserID($user_id);
+
+        $class_block_avatar = new BlockAvatar();
+        $data['block_avatar'] = $class_block_avatar->getBlockAvatar($link_id);
+
+        $class_link_background = new LinkBackground();
+        $data['link_background'] = $class_link_background->getLinkBackground($link_id);
 
         require_once __DIR__.'/forms/link-get.php';
         require_once __DIR__.'/forms/link-create.php';

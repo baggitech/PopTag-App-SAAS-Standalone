@@ -62,12 +62,14 @@ class User extends Model
 				email = :email,
 				password = :password,
 				level = :level,
+				verified = :verified,
 				code_verify = :code_verify
 			");
 			$statement->bindValue(":name", $name);
 			$statement->bindValue(":email", $email);
-			$statement->bindValue(":password", hash('sha256', $password));
+			$statement->bindValue(":password", password_hash($password, PASSWORD_DEFAULT));
 			$statement->bindValue(":level", 1);
+			$statement->bindValue(":verified", 0);
 			$statement->bindValue(":code_verify", $code_verify);
 			$statement->execute();
 
@@ -186,27 +188,5 @@ class User extends Model
 			return false;
 		}
 	}
-
-	public function changeStatusToVerified($email, $code_verify)
-	{
-		$statement = $this->db->prepare("SELECT * FROM users WHERE email = :email AND code_verify = :code_verify");
-		$statement->bindValue(":email", $email);
-		$statement->bindValue(":code_verify", $code_verify);
-		$statement->execute();
-		if ($statement->rowCount() > 0) {
-			$statement = $this->db->prepare("UPDATE users SET 
-				verified = :verified 
-				WHERE email = :email
-				");
-			$statement->bindValue(":verified", 1);
-			$statement->bindValue(":email", $email);
-			$statement->execute();
-
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 
 }

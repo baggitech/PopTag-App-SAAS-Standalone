@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['form_']) && $_POST['form_'] == 'link_create') 
 {
-    if (isset($_POST['token']) && !hash_equals($_SESSION['csrf_token'], $_POST['token'])) 
+    if (!isset($_POST['token']) || !hash_equals($_SESSION['csrf_token'], $_POST['token'])) 
     {
         $_SESSION['error_message'] = "Token inválido. Tente novamente.";
         header('Location: ' . URL_PATH . 'link/edit/' . $link_id);

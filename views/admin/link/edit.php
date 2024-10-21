@@ -119,7 +119,7 @@
                   <?php require_once __DIR__ . '/settings/background.php'; ?>
                   <?php //require_once __DIR__ . '/settings/utm.php'; ?>
                   <?php require_once __DIR__ . '/settings/code-snippet.php'; ?>
-                  <?php //require_once __DIR__ . '/settings/protection.php'; ?>
+                  <?php require_once __DIR__ . '/settings/protection.php'; ?>
 
                 </div>
                 <!-- Accordion end -->

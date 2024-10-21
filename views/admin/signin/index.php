@@ -11,17 +11,21 @@
 
             <form action="" method="POST">
 
-              <input type="hidden" name="token" value="<?=$_SESSION['csrf_token'];?>" readonly>
-              <input type="hidden" name="form_signin" readonly>
+              <div class="hidden mb-3">
+                <input type="text" name="form_" value="signin" readonly>
+                <input type="text" name="token" value="<?=$_SESSION['csrf_token'] ?? ''; ?>" readonly>
+              </div>
 
               <div class="mb-3">
                 <label for="email" class="form-label">Endereço de email</label>
                 <input type="email" class="form-control" name="email" id="email" autocomplete="off" required placeholder="Enter Your Email">
               </div>
-              <div class="mb-3">
+
+              <div class="form-group mb-3" data-password-toggle-view data-password-toggle-view-show="Show" data-password-toggle-view-hide="Hide">
                 <label for="password" class="form-label">Senha</label>
                 <input type="password" class="form-control" name="password" id="password" autocomplete="off" required placeholder="Enter Password">
               </div>
+
               <div class="row mb-3">
                 <div class="col-sm">
                   <div class="form-check form-check-inline">
@@ -33,9 +37,11 @@
                   <a class="btn-link" href="<?=URL_PATH;?>recovery">Esqueceu a senha?</a>
                 </div>
               </div>
+
               <div class="d-grid mb-3">
                 <button type="submit" class="btn btn-primary">Entrar</button>
               </div>
+              
             </form>
 
             <p class="text-3 text-muted text-center mb-0">Não tem uma conta? 

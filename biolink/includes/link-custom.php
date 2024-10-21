@@ -22,33 +22,33 @@
       color: #000000;
     }
 
-    <?php if ($result['background_type'] == "gradient"): ?>
+    <?php if ($result_link_settings['background_type'] == "gradient"): ?>
 
     .link-body {
-      font-family: "<?= $result['font_one'] ?? ''; ?>", <?= $result['font_two'] ?? ''; ?>, <?= $result['font_three'] ?? ''; ?>, sans-serif !important;
-      font-size: <?= $result['font_size'] ?? ''; ?>px !important;
-      color: <?= $result['font_color'] ?? ''; ?> !important;
-      background: linear-gradient(<?= $result['background_to_direction'] ?? ''; ?>, <?= $result['background_color_one'] ?? ''; ?>, <?= $result['background_color_two'] ?? ''; ?>);
+      font-family: "<?= $result_link_settings['font_one'] ?? ''; ?>", <?= $result_link_settings['font_two'] ?? ''; ?>, <?= $result_link_settings['font_three'] ?? ''; ?>, sans-serif !important;
+      font-size: <?= $result_link_settings['font_size'] ?? ''; ?>px !important;
+      color: <?= $result_link_settings['font_color'] ?? ''; ?> !important;
+      background: linear-gradient(<?= $result_link_settings['background_to_direction'] ?? ''; ?>, <?= $result_link_settings['background_color_one'] ?? ''; ?>, <?= $result_link_settings['background_color_two'] ?? ''; ?>);
       background-attachment: scroll;
     }
 
-    <?php elseif ($result['background_type'] == "custom"): ?>
+    <?php elseif ($result_link_settings['background_type'] == "custom"): ?>
 
     .link-body {
-      font-family: "<?= $result['font_one'] ?? ''; ?>", <?= $result['font_two'] ?? ''; ?>, <?= $result['font_three'] ?? ''; ?>, sans-serif !important;
-      font-size: <?= $result['font_size'] ?? ''; ?>px !important;
-      color: <?= $result['font_color'] ?? ''; ?> !important;
-      background: linear-gradient(<?= $result['background_to_direction'] ?? ''; ?>, <?= $result['background_color_one'] ?? ''; ?>, <?= $result['background_color_two'] ?? ''; ?>);
+      font-family: "<?= $result_link_settings['font_one'] ?? ''; ?>", <?= $result_link_settings['font_two'] ?? ''; ?>, <?= $result_link_settings['font_three'] ?? ''; ?>, sans-serif !important;
+      font-size: <?= $result_link_settings['font_size'] ?? ''; ?>px !important;
+      color: <?= $result_link_settings['font_color'] ?? ''; ?> !important;
+      background: linear-gradient(<?= $result_link_settings['background_to_direction'] ?? ''; ?>, <?= $result_link_settings['background_color_one'] ?? ''; ?>, <?= $result_link_settings['background_color_two'] ?? ''; ?>);
       background-attachment: scroll;
     }
 
-    <?php elseif ($result['background_type'] == "image"): ?>
+    <?php elseif ($result_link_settings['background_type'] == "image"): ?>
 
     .link-body {
-      font-family: "<?= $result['font_one'] ?? ''; ?>", <?= $result['font_two'] ?? ''; ?>, <?= $result['font_three'] ?? ''; ?>, sans-serif !important;
-      font-size: <?= $result['font_size'] ?? ''; ?>px !important;
-      color: <?= $result['font_color'] ?? ''; ?> !important;
-      background-image: url("<?=URL_PATH;?>/uploads/background/<?= $result['background_image'] ?? ''; ?>");
+      font-family: "<?= $result_link_settings['font_one'] ?? ''; ?>", <?= $result_link_settings['font_two'] ?? ''; ?>, <?= $result_link_settings['font_three'] ?? ''; ?>, sans-serif !important;
+      font-size: <?= $result_link_settings['font_size'] ?? ''; ?>px !important;
+      color: <?= $result_link_settings['font_color'] ?? ''; ?> !important;
+      background-image: url("<?=URL_PATH;?>/uploads/background/<?= $result_link_settings['background_image'] ?? ''; ?>");
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed; /* O fundo fica fixo enquanto o conteúdo rola */

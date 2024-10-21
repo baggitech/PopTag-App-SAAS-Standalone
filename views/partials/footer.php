@@ -82,8 +82,9 @@
   </a> 
 
   <!-- Start Generic Script --> 
-  <script src="<?=VENDOR_PATH;?>jquery/3.6.0/jquery.min.js"></script> 
-  <script src="<?=VENDOR_PATH;?>bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="<?=VENDOR_PATH;?>jquery/3.7.1/jquery-3.7.1.min.js?v=3.7.1"></script>
+  <script src="<?=VENDOR_PATH;?>popperjs/2.11.8/dist/umd/popper.min.js?v=2.11.8"></script> 
+  <script src="<?=VENDOR_PATH;?>bootstrap/5.3.3/js/bootstrap.bundle.min.js?v=5.3.3"></script>
   <script src="<?=VENDOR_PATH;?>DataTables/datatables.js"></script>
   <script>
     $(document).ready(function() {
@@ -160,6 +161,7 @@
   <!-- Start custom script --> 
   <script src="<?=ASSETS_PATH;?>js/alert-lightweight-1.0.js"></script>
   <script src="<?=ASSETS_PATH;?>js/select-lightweight-1.0.js"></script>
+  <script src="<?=ASSETS_PATH;?>js/password-toggle-view.js"></script>
   <!-- End custom script -->  
 
   <!-- Start browser back button simulator -->

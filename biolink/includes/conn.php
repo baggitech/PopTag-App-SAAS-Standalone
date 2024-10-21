@@ -10,8 +10,8 @@ class Database
         define('DB_DRIVER', 'mysql');
         define('DB_HOST', 'localhost');
         define('DB_NAME', 'poptag_app_db');
-        define('DB_USER', 'root'); // poptag_admin
-        define('DB_PASS', ''); // BQAmiev@v!QT
+        define('DB_USER', 'poptag_admin'); // poptag_admin
+        define('DB_PASS', 'BQAmiev@v!QT'); // BQAmiev@v!QT
 
         try {
             $options = [

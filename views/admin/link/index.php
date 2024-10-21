@@ -105,7 +105,7 @@
                         <td class="text-center">
 
                           <form action="" method="POST">
-                         
+
                             <input type="hidden" name="form_" value="link_enabledDisabled" readonly>
                             <input type="hidden" name="token" value="<?= $_SESSION['token']; ?>" readonly>
                             <input type="hidden" name="link_id" value="<?= $value['link_id']; ?>" readonly>
@@ -187,9 +187,11 @@
 
           <form action="" method="POST">
 
-            <input type="hidden" name="form_" value="link_create" readonly>
-            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?? ''; ?>">
-            <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?? ''; ?>">
+            <div class="hidden mb-3">
+              <input type="text" name="form_" value="link_create" readonly>
+              <input type="text" name="user_id" value="<?= $_SESSION['user_id'] ?? ''; ?>">
+              <input type="text" name="token" value="<?= $_SESSION['token'] ?? ''; ?>" readonly>
+            </div>
 
             <div class="row g-3">
               <div class="col-12">

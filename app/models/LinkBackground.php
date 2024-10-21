@@ -69,6 +69,24 @@ class LinkBackground extends Model
             return false; // Retorna falso se o link não for encontrado
         }
     }
-    
+
+	public function deleteLinkBackground($link_id) 
+	{
+		$statement = $this->db->prepare("SELECT * FROM link_background WHERE link_id = :link_id");
+		$statement->bindValue(":link_id", $link_id);
+		$statement->execute();
+		if($statement->rowCount() > 0) 
+		{
+			$statement = $this->db->prepare("DELETE FROM link_background WHERE link_id = :link_id");
+			$statement->bindValue(":link_id", $link_id);
+			$statement->execute();
+
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+	}   
 
 }

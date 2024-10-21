@@ -59,7 +59,7 @@ if (session_status() !== PHP_SESSION_ACTIVE)
 
     // Define as configurações do cookie de sessão
     $options = [
-        'lifetime' => null,
+        'lifetime' => 3600,  // 1 hora OR null
         'path' => COOKIE_PATH,
         //'domain' => $base_url,
         'secure' => true,
