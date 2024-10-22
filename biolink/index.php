@@ -6,7 +6,8 @@ require_once(__DIR__ . '/includes/conn.php');
 require_once(__DIR__ . '/includes/init.php');
 require_once(__DIR__ . '/includes/functions.php');
 
-if (isset($_GET['url']) && !empty($_GET['url'])) {
+if (isset($_GET['url']) && !empty($_GET['url'])) 
+{
     // Obtém e sanitiza o valor 'url' da variável $_GET, removendo possíveis caracteres inválidos
     $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
     $parts = explode('/', $url);
@@ -14,31 +15,40 @@ if (isset($_GET['url']) && !empty($_GET['url'])) {
 
     $result_link_settings = getLinkSettings($db, $url);
 
-    if ($result_link_settings) {
+    if ($result_link_settings) 
+    {
         $link_id = $result_link_settings['link_id'];
         $link_name = $result_link_settings['link_name'];
         $link_is_enabled = $result_link_settings['link_is_enabled'];
-        $link_sensitive_content = $result_link_settings['link_sensitive_content'];
+        $link_sensitive_content = 0;//$result_link_settings['link_sensitive_content'];
         $link_password = $result_link_settings['link_password'];
 
-        if ($link_is_enabled) {
-            if ($link_sensitive_content) {
+        if ($link_is_enabled) 
+        {
+            if ($link_sensitive_content) 
+            {
                 header("Location: " . URL_PATH . "login.php");
                 exit;
             }
-        } else {
+        } 
+        else 
+        {
             http_response_code(404);
             header("Location: " . URL_PATH . "404.html");
             exit;
         }
-    } else {
+    } 
+    else 
+    {
         http_response_code(404);
         header("Location: " . URL_PATH . "404.html");
         exit;
     }
 
     $result_avatar = getLinkAvatar($db, $link_name);
-} else {
+} 
+else 
+{
     http_response_code(400);
     header("Location: " . URL_PATH . "400.html");
     exit;

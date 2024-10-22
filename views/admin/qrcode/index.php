@@ -83,6 +83,7 @@
                   <tbody class="border-top">
 
                     <?php foreach ($qrcodes as $value): ?>
+                      
                       <tr class="position-relative text-start align-middle">
                         <td class="text-center">
                           <h5 class="text-3 fw-400"><?= $value['qrcode_id']; ?></h5>
@@ -143,6 +144,7 @@
                                 </a>
                               </li>
                               <li>
+
                                 <form action="" method="POST" enctype="multipart/form-data">
                                   <input type="hidden" name="form_qrcode_delete" value="1" readonly>
                                   <input type="hidden" name="token" value="<?= $_SESSION['token']; ?>" readonly>
@@ -152,11 +154,13 @@
                                     <i class="fa fa-trash me-2"></i> Deletar
                                   </button>
                                 </form>
+                                
                               </li>
                             </ul>
                           </div>
                         </td>
                       </tr>
+
                     <?php endforeach; ?>
 
                   </tbody>

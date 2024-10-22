@@ -18,7 +18,7 @@ class QRCodeCustom extends Model
 		$statement = $this->db->prepare("SELECT * FROM qrcodes 
 			LEFT JOIN links ON qrcodes.link_id = links.link_id
 			LEFT JOIN link_domain ON qrcodes.link_id = link_domain.link_id 
-			WHERE qrcodes.link_id = :user_id ORDER BY qrcodes.qrcode_id DESC
+			WHERE qrcodes.user_id = :user_id ORDER BY qrcodes.qrcode_id DESC
 		");
 		$statement->bindValue(":user_id", $user_id);
 		$statement->execute();

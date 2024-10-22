@@ -39,6 +39,7 @@ class QrcodeController extends Controller
 		$data = array();
 		$user_id = $_SESSION['user_id'] ?? null;
 		$data = (new DataService())->getDataServiceBackEnd($data, $user_id);
+		// ---------------------------------------------------------------------- //
 
 		$link_id = $_SESSION['link_id'] ?? null;
 		$qrcode_id = $_SESSION['qrcode_id'] ?? null;
